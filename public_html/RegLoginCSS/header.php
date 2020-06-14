@@ -1,5 +1,5 @@
 <head>
-    <title>nick's site 100</title>
+    <title>Nick K's Site</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php

@@ -5,10 +5,10 @@ label {
     border: 4px black;
 }
 form {
-    width:80%;
+    width:50%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
+    margin-top: 30%;
     text-align: center;
 }
 .ul {
