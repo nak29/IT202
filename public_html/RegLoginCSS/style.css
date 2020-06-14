@@ -1,5 +1,5 @@
 input {
-    background-color: tan;
+    background-color: #ffe2cf;
 }
 label {
     border: 4px black;
@@ -10,4 +10,8 @@ form {
     margin-right: auto;
     margin-top: 10%;
     text-align: center;
+}
+.li {
+    font-weight: bold;
+    font-family: Roboto;
 }
