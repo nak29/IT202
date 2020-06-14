@@ -3,7 +3,7 @@ include("header.php");
 //session_start();//called from header.php
 session_unset();
 session_destroy();
-echo "You have been logged out";
+echo "You have been logged out. ";
 echo var_export($_SESSION, true);
 //get session cookie and delete/clear it for this session
 if (ini_get("session.use_cookies")) {
@@ -16,3 +16,4 @@ if (ini_get("session.use_cookies")) {
     );
 }
 ?>
+<title>logout page</title>
