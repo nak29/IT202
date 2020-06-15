@@ -12,14 +12,15 @@ form {
 title {
     font-family: "Georgia", serif;
 }
-/*
-
-.ul {
-    font-weight: bold;
-    font-family: "Roboto Black", serif;
-}*/
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #6588c9;
+    color: white;
+    font-size: 30px;
+}
 ul.mymain {
     list-style-type: square;
-    font-weight: bold;
+    font-weight: lighter;
     font-family: "Roboto Black", serif;
 }
