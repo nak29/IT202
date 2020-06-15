@@ -3,6 +3,9 @@ input {
 }
 label {
     border: 4px black;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 form {
     width:20%;
