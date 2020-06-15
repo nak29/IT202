@@ -13,11 +13,10 @@ title {
     font-family: "Georgia", serif;
 }
 h4 {
-    padding: 60px;
-    text-align: center;
-    background: #6588c9;
-    color: white;
-    font-size: 30px;
+    padding: 30px;
+    text-align: left;
+    color: #6588c9;
+    font-size: 48px;
 }
 ul.mymain {
     list-style-type: square;
