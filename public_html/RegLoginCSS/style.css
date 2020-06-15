@@ -1,19 +1,15 @@
-/*input {
+input {
     background-color: #ffe2cf;
 }
 label {
     border: 4px black;
-    margin-left: auto;
-    margin-right: auto;
     text-align: left;
 }
 form {
     width:20%;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 5%;
     text-align: left;
-}*/
+}
 /*
 .ul {
     font-weight: bold;
