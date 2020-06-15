@@ -7,7 +7,7 @@ require("config.php");
 session_start();
 ?>
 <nav>
-    <ul>
+    <ul class="mymain">
         <li>
             <a href="home.php">Home</a>
         </li>

@@ -17,3 +17,8 @@ title {
     font-weight: bold;
     font-family: "Roboto Black", serif;
 }*/
+ul.mymain {
+    list-style-type: square;
+    font-weight: bold;
+    font-family: "Roboto Black", serif;
+}
