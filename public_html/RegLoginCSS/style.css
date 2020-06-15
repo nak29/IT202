@@ -9,6 +9,9 @@ form {
     margin-top: 5%;
     text-align: left;
 }
+.title {
+    font-family: "Georgia", serif;
+}
 /*
 .ul {
     font-weight: bold;
