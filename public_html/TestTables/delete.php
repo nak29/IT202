@@ -4,91 +4,64 @@ $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 $thingId = -1;
 $result = array();
-function get($arr, $key){
-    if(isset($arr[$key])){
-        return $arr[$key];
-    }
-    return "";
-}
+require("common.inc.php");
 if(isset($_GET["thingId"])){
     $thingId = $_GET["thingId"];
-    $stmt = $db->prepare("SELECT * FROM Things where id = :id");
+    $stmt = $db->prepare("SELECT * FROM Products where id = :id");
     $stmt->execute([":id"=>$thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if(!$result){
-        $thingId = -1;
-    }
 }
 else{
-    echo "No thingId provided in url, don't forget this or sample won't work.";
+    echo "No product selected for deletion.";
 }
 ?>
 
     <form method="POST">
-        <label for="thing">Thing Name
-            <input type="text" id="thing" name="name" value="<?php echo get($result, "name");?>" />
+        <label for="thing">New Product
+            <input type="text" id="product" name="product" value="<?php echo get($result, "product");?>" />
         </label>
-        <label for="q">Quantity
+        <label for="<br>p">Price
+            <input type="number" id="p" name="price" value="<?php echo get($result, "price");?>" />
+        </label>
+        <label for="<br>quantity">Quantity
             <input type="number" id="q" name="quantity" value="<?php echo get($result, "quantity");?>" />
         </label>
-        <?php if($thingId > 0):?>
-            <input type="submit" name="updated" value="Update Thing"/>
-            <input type="submit" name="delete" value="Delete Thing"/>
-        <?php elseif ($thingId < 0):?>
-            <input type="submit" name="created" value="Create Thing"/>
-        <?php endif;?>
+        <input type="submit" name="delete" value="Delete product"/>
     </form>
 
 <?php
-if(isset($_POST["updated"]) || isset($_POST["created"]) || isset($_POST["delete"])){
+if(isset($_POST["delete"])){
     $delete = isset($_POST["delete"]);
-    $name = $_POST["name"];
-    $quantity = $_POST["quantity"];
-    if(!empty($name) && !empty($quantity)){
-        try{
-            if($thingId > 0) {
-                if($delete){
-                    $stmt = $db->prepare("DELETE from Things where id=:id");
-                    $result = $stmt->execute(array(
-                        ":id" => $thingId
-                    ));
-                }
-                else {
-                    $stmt = $db->prepare("UPDATE Things set name = :name, quantity=:quantity where id=:id");
-                    $result = $stmt->execute(array(
-                        ":name" => $name,
-                        ":quantity" => $quantity,
-                        ":id" => $thingId
-                    ));
-                }
-            }
-            else{
-                $stmt = $db->prepare("INSERT INTO Things (name, quantity) VALUES (:name, :quantity)");
+    $product = $_POST["product"];
+    if(!empty($product)) {
+        try {
+            if ($thingId > 0) {
+                $stmt = $db->prepare("DELETE from Products where id=:id");
                 $result = $stmt->execute(array(
-                    ":name" => $name,
-                    ":quantity" => $quantity
+                    ":id" => $thingId
                 ));
+            } else {
+                echo "Product " . $product . " does not exist.";
             }
             $e = $stmt->errorInfo();
-            if($e[0] != "00000"){
+            if ($e[0] != "00000") {
                 echo var_export($e, true);
-            }
-            else{
+            } else {
                 echo var_export($result, true);
-                if ($result){
-                    echo "Successfully interacted with thing: " . $name;
-                }
-                else{
-                    echo "Error interacting record";
+                if ($result) {
+                    echo "Successfully interacted with thing: " . $product;
+                } else {
+                    echo "Error deleting product";
                 }
             }
         }
-        catch (Exception $e){
-            echo $e->getMessage();
-        }
+        catch
+            (Exception $e){
+                echo $e->getMessage();
+            }
     }
     else{
-        echo "Name and quantity must not be empty.";
+        echo "Product must not be empty.";
     }
 }
 ?>
