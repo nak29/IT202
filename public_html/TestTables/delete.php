@@ -49,7 +49,7 @@ if(isset($_POST["delete"])){
             } else {
                 echo var_export($result, true);
                 if ($result) {
-                    echo "Successfully interacted with thing: " . $product;
+                    echo "Successfully deleted: " . $product;
                 } else {
                     echo "Error deleting product";
                 }
