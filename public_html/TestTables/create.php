@@ -9,7 +9,7 @@
 </form>
 
 <?php
-if(isset($_POST["created"])){
+if(isset($_POST['created'])){
     $product = $_POST['product'];
     $price = $_POST['price'];
     if(!empty($product) && !empty($price)){
