@@ -28,8 +28,8 @@ else{
 
 <?php
 if(isset($_POST["updated"])){
-    $name = $_POST["product"];
-    $quantity = $_POST["price"];
+    $product = $_POST["product"];
+    $price = $_POST["price"];
     if(!empty($product) && !empty($price)){
         try{
             $stmt = $db->prepare("UPDATE Products set name = :product, quantity=:price where id=:id");
@@ -45,7 +45,7 @@ if(isset($_POST["updated"])){
             else{
                 echo var_export($result, true);
                 if ($result){
-                    echo "Successfully updated thing: " . $name;
+                    echo "Successfully updated thing: " . $product;
                 }
                 else{
                     echo "Error updating record";
