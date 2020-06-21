@@ -10,8 +10,8 @@
 
 <?php
 if(isset($_POST["created"])){
-    $product = $_POST["product"];
-    $price = $_POST["price"];
+    $product = $_POST['product'];
+    $price = $_POST['price'];
     if(!empty($product) && !empty($price)){
         require("config.php");
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
@@ -19,8 +19,8 @@ if(isset($_POST["created"])){
             $db = new PDO($connection_string, $dbuser, $dbpass);
             $stmt = $db->prepare("INSERT INTO Products (product, price) VALUES (:product, :price)");
             $result = $stmt->execute(array(
-                ":product" => $product,
-                ":price" => $price
+                ':product' => $product,
+                ':price' => $price
             ));
             $e = $stmt->errorInfo();
             if($e[0] != "00000"){
