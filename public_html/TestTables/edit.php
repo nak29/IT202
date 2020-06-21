@@ -21,7 +21,10 @@ else{
             <input type="text" id="product" name="product" value="<?php echo get($result, "product");?>" />
         </label>
         <label for="p">Price
-            <input type="number" id="q" name="price" value="<?php echo get($result, "price");?>" />
+            <input type="number" id="p" name="price" value="<?php echo get($result, "price");?>" />
+        </label>
+        <label for="quantity">Quantity
+            <input type="number" id="q" name="quantity" value="<?php echo get($result, "quantity");?>" />
         </label>
         <input type="submit" name="updated" value="Update product"/>
     </form>
@@ -30,12 +33,14 @@ else{
 if(isset($_POST["updated"])){
     $product = $_POST["product"];
     $price = $_POST["price"];
-    if(!empty($product) && !empty($price)){
+    $quantity = $_POST["quantity"];
+    if(!empty($product) && !empty($price) && !empty($quantity)){
         try{
-            $stmt = $db->prepare("UPDATE Products set product = :product, price=:price where id=:id");
+            $stmt = $db->prepare("UPDATE Products set product = :product, price=:price, quantity=:quantity where id=:id");
             $result = $stmt->execute(array(
                 ":product" => $product,
                 ":price" => $price,
+                ":quantity" => $quantity,
                 ":id" => $thingId
             ));
             $e = $stmt->errorInfo();
@@ -57,7 +62,7 @@ if(isset($_POST["updated"])){
         }
     }
     else{
-        echo "Product and price must not be empty.";
+        echo "Fields must not be empty.";
     }
 }
 ?>
