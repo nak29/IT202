@@ -1,6 +1,6 @@
 CREATE TABLE Products(
     id int auto_increment,
-    name varchar(60) NOT NULL unique,
+    product varchar(60) NOT NULL unique,
     quantity int default  0,
     price decimal(10,2) default  0.00,
     description TEXT,
