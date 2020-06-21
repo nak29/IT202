@@ -32,7 +32,7 @@ if(isset($_POST["updated"])){
     $price = $_POST["price"];
     if(!empty($product) && !empty($price)){
         try{
-            $stmt = $db->prepare("UPDATE Products set name = :product, quantity=:price where id=:id");
+            $stmt = $db->prepare("UPDATE Products set product = :product, quantity=:price where id=:id");
             $result = $stmt->execute(array(
                 ":product" => $product,
                 ":price" => $price,
