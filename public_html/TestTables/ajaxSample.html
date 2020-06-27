@@ -1,0 +1,56 @@
+<script>
+    function deleteThing(id){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let json = JSON.parse(this.responseText);
+                if(json.status == 200){
+                    alert(json.message);
+                }
+                else{
+                    alert(json.message +"\n" + json.error);
+                }
+            }
+        };
+        xhttp.open("GET", "ajax_delete.php?thingId=" + id, true);
+        xhttp.send();
+    }
+    function fetchThings(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("raw").innerHTML = "<pre>" + this.responseText + "</pre>";
+                let json = JSON.parse(this.responseText);
+                if(json.status == 200){
+                    let ul = document.createElement("ul");
+                    json.results.forEach(function(item, index){
+                        let li = document.createElement("li");
+                        li.innerText = item.name + ": " + item.quantity;
+                        let deleteButton = document.createElement("a");
+                        deleteButton.href = "#";
+                        deleteButton.onclick = function(){
+                            //path is <a> / <li> / <ul>
+                            this.parentNode.parentNode.removeChild(this.parentNode);
+                            deleteThing(item.id);
+                        };
+                        deleteButton.innerText = "Delete";
+                        li.appendChild(deleteButton);
+                        ul.appendChild(li);
+                    });
+                    let content = document.getElementById("content");
+                    content.innerHTML = "";
+                    content.appendChild(ul);
+                }
+            }
+        };
+        xhttp.open("GET", "ajax_list.php", true);
+        xhttp.send();
+    }
+</script>
+<body onload="fetchThings();">
+<h4>Raw Data:</h4>
+<div id="raw"></div>
+<h4>Parsed Data:</h4>
+<div id="content">Loading...</div>
+</body>
+© 2020 GitHub, Inc.
