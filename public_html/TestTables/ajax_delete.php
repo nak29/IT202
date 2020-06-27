@@ -3,7 +3,7 @@ $result = array("status"=>200, "message"=>"Nothing happened");
 if (isset($_GET["thingId"]) && !empty($_GET["thingId"])){
     if(is_numeric($_GET["thingId"])){
         $thingId = (int)$_GET["thingId"];
-        $query = file_get_contents(__DIR__ . "/queries/DELETE_ONE_TABLE_THINGS.sql");
+        $query = file_get_contents(__DIR__ . "/queries/DELETE_ONE_TABLE_PRODUCTS.sql");
         if(isset($query) && !empty($query)) {
             require("common.inc.php");
             $stmt = getDB()->prepare($query);
