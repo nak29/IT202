@@ -24,8 +24,10 @@ if(isset($query) && !empty($query)){
         we're also using our helper function to safely return a value based on our key/column name.-->
         <?php foreach($results as $row):?>
             <li>
-                <?php echo get($row, "name")?>
+                <?php echo get($row, "id")?>
+                <?php echo get($row, "product");?>
                 <?php echo get($row, "quantity");?>
+                <?php echo get($row, "price");?>
                 <a href="delete.php?thingId=<?php echo get($row, "id");?>">Delete</a>
             </li>
         <?php endforeach;?>
