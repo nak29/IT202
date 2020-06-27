@@ -25,7 +25,7 @@
                     let ul = document.createElement("ul");
                     json.results.forEach(function(item, index){
                         let li = document.createElement("li");
-                        li.innerText = item.name + ": " + item.quantity;
+                        li.innerText = item.product + ": " + item.quantity;
                         let deleteButton = document.createElement("a");
                         deleteButton.href = "#";
                         deleteButton.onclick = function(){
