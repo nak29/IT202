@@ -1,6 +1,6 @@
 <?php
 require("common.inc.php");
-$query = file_get_contents(__DIR__ . "/queries/SELECT_ALL_TABLE_THINGS.sql");
+$query = file_get_contents(__DIR__ . "/queries/SELECT_PRODUCTS.sql");
 //prep our response object
 $result = array("status"=>"200");
 if(isset($query) && !empty($query)){
