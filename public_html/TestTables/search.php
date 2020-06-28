@@ -8,20 +8,17 @@ if(isset($_POST["search"])){
     <form method="POST">
         <input type="text" name="search" placeholder="Search Products"
                value="<?php echo $search;?>"/>
-        <input type="radio" name='button' value="Search" id="1">
+        <input type="radio" name='button' value="search" id="1">
         <label for="Search">Search</label>
-        <input type="radio" name='button' value='Ascending Order' id="2">
+        <input type="radio" name='button' value='ascend' id="2">
         <label for="Ascending Order">Ascending Order</label>
-        <input type="radio" name='button' value='Descending Order' id="3">
+        <input type="radio" name='button' value='descend' id="3">
         <label for="Descending Order">Descending Order</label>
         <input type="submit" value="Submit"/>
     </form>
 
-var button1 = document.getElementById("1");
-var button2 = document.getElementById("2");
-var button3 = document.getElementById("3");
 <?php
-if($_POST['Ascending Order']){
+if($_POST["button"] == "ascend"){
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
@@ -35,7 +32,7 @@ if($_POST['Ascending Order']){
         echo $e->getMessage();
     }
 }
-elseif($_POST['Descending Order']){
+elseif($_POST["button"] == "descend"){
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/DESCEND_TABLE_PRODUCTS.sql");
 
