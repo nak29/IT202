@@ -8,14 +8,18 @@ if(isset($_POST["search"])){
     <form method="POST">
         <input type="text" name="search" placeholder="Search Products"
                value="<?php echo $search;?>"/>
-        <input type="radio" name='button' value="Search">
+        <input type="radio" name='button' value="Search" id="1">
         <label for="Search">Search</label>
-        <input type="radio" name='button' value='Ascending Order'>
+        <input type="radio" name='button' value='Ascending Order' id="2">
         <label for="Ascending Order">Ascending Order</label>
-        <input type="radio" name='button' value='Descending Order'>
+        <input type="radio" name='button' value='Descending Order' id="3">
         <label for="Descending Order">Descending Order</label>
-        <input type="submit" name="submit" value="Submit"/>
+        <input type="submit" value="Submit"/>
     </form>
+
+var button1 = document.getElementById("1");
+var button2 = document.getElementById("2");
+var button3 = document.getElementById("3");
 <?php
 if($_POST['Ascending Order']){
     require("common.inc.php");
