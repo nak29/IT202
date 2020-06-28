@@ -13,7 +13,33 @@ if(isset($_POST["search"])){
         <input type="submit" value="Descending Order"/>
     </form>
 <?php
-if(isset($search)) {
+if(isset($_POST['Ascending Order'])){
+    $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
+
+    try {
+        $stmt = getDB()->prepare($query);
+        //Note: With a LIKE query, we must pass the % during the mapping
+        $stmt->execute([":product"=>$search]);
+        //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+elseif(isset($_POST['Descending Order'])){
+    $query = file_get_contents(__DIR__ . "/queries/DESCEND_TABLE_PRODUCTS.sql");
+
+    try {
+        $stmt = getDB()->prepare($query);
+        //Note: With a LIKE query, we must pass the % during the mapping
+        $stmt->execute([":product"=>$search]);
+        //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+elseif(isset($search)) {
 
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
