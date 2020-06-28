@@ -9,7 +9,11 @@ if(isset($_POST["search"])){
         <input type="text" name="search" placeholder="Search Products"
                value="<?php echo $search;?>"/>
         <input type="submit" value="Search"/>
+    </form>
+    <form method="POST">
         <input type="submit" name='Ascending Order' value='Ascending Order'/>
+    </form>
+    <form method="POST">
         <input type="submit" name='Descending Order' value='Descending Order'/>
     </form>
 <?php
