@@ -18,6 +18,11 @@ h4 {
     color: #6588c9;
     font-size: 48px;
 }
+li {
+    list-style-type: square;
+    font-weight: lighter;
+    font-family: "Roboto Black", serif;
+}
 ul.mymain {
     list-style-type: square;
     font-weight: lighter;
