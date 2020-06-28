@@ -41,7 +41,7 @@ elseif(isset($_POST['Descending Order'])){
         echo $e->getMessage();
     }
 }
-elseif(isset($search)) {
+elseif(isset($_POST['search'])) {
 
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
