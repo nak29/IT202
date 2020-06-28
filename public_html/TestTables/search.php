@@ -9,8 +9,8 @@ if(isset($_POST["search"])){
         <input type="text" name="search" placeholder="Search Products"
                value="<?php echo $search;?>"/>
         <input type="submit" value="Search"/>
-        <input type="submit" name="Ascending Order" value="Ascending Order"/>
-        <input type="submit" name="Descending Order" value="Descending Order"/>
+        <input type="submit" name='Ascending Order' value='Ascending Order'/>
+        <input type="submit" name='Descending Order' value='Descending Order'/>
     </form>
 <?php
 if(isset($_POST['Ascending Order'])){
@@ -41,7 +41,7 @@ elseif(isset($_POST['Descending Order'])){
         echo $e->getMessage();
     }
 }
-elseif(isset($_POST['search'])) {
+elseif(isset($search)) {
 
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
