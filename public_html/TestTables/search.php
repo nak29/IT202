@@ -14,6 +14,7 @@ if(isset($_POST["search"])){
         <label for="Ascending Order">Ascending Order</label>
         <input type="radio" name='button' value='Descending Order'/>
         <label for="Descending Order">Descending Order</label>
+        <input type="submit" name="submit" value="Submit"/>
     </form>
 <?php
 if($_POST['Ascending Order']){
