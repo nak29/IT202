@@ -13,7 +13,7 @@ if(isset($_POST["search"])){
         <input type="submit" name='Descending Order' value='Descending Order'/>
     </form>
 <?php
-if(isset($_POST['Ascending Order'])){
+if($_POST['Ascending Order']){
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
@@ -27,7 +27,7 @@ if(isset($_POST['Ascending Order'])){
         echo $e->getMessage();
     }
 }
-elseif(isset($_POST['Descending Order'])){
+elseif($_POST['Descending Order']){
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/DESCEND_TABLE_PRODUCTS.sql");
 
