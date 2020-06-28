@@ -6,11 +6,14 @@ if(isset($_POST["search"])){
 }
 ?>
     <form method="POST">
-        <input type="text" name="button" placeholder="Search Products"
+        <input type="text" name="search" placeholder="Search Products"
                value="<?php echo $search;?>"/>
         <input type="radio" name='button' value="Search"/>
+        <label for="Search">Search</label>
         <input type="radio" name='button' value='Ascending Order'/>
+        <label for="Ascending Order">Ascending Order</label>
         <input type="radio" name='button' value='Descending Order'/>
+        <label for="Descending Order">Descending Order</label>
     </form>
 <?php
 if($_POST['Ascending Order']){
