@@ -1,0 +1,1 @@
+SELECT * FROM Products where product like CONCAT('%', :product, '%')
