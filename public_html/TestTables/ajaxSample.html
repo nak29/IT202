@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style.css">
 <script>
     function deleteThing(id){
         var xhttp = new XMLHttpRequest();
@@ -25,7 +26,7 @@
                     let ul = document.createElement("ul");
                     json.results.forEach(function(item, index){
                         let li = document.createElement("li");
-                        li.innerText = item.product + ": " + item.quantity;
+                        li.innerText = item.product + ": " + item.quantity + ": $" + item.price;
                         let deleteButton = document.createElement("a");
                         deleteButton.href = "#";
                         deleteButton.onclick = function(){
