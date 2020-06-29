@@ -18,16 +18,9 @@ if(isset($_POST["search"])){
     </form>
 
 <?php
-if($_POST["submit"]){
+if($_POST["button"] == "ascend"){
     require("common.inc.php");
-    $action = $_POST["button"];
-    $search = $_POST["search"];
-    if($action == "ascend"){
-        $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
-    }
-    else{
-        $query = file_get_contents(__DIR__ . "/queries/DESCEND_TABLE_PRODUCTS.sql");
-    }
+    $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
     try {
         $stmt = getDB()->prepare($query);
@@ -37,6 +30,36 @@ if($_POST["submit"]){
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         echo $e->getMessage();
+    }
+}
+elseif($_POST["button"] == "descend"){
+    require("common.inc.php");
+    $query = file_get_contents(__DIR__ . "/queries/DESCEND_TABLE_PRODUCTS.sql");
+
+    try {
+        $stmt = getDB()->prepare($query);
+        //Note: With a LIKE query, we must pass the % during the mapping
+        $stmt->execute([":product"=>$search]);
+        //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+elseif(isset($search) && ($_POST["button"] == "search")) {
+
+    require("common.inc.php");
+    $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
+    if (isset($query) && !empty($query)) {
+        try {
+            $stmt = getDB()->prepare($query);
+            //Note: With a LIKE query, we must pass the % during the mapping
+            $stmt->execute([":product"=>$search]);
+            //Note the fetchAll(), we need to use it over fetch() if we expect >1 record
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 ?>
