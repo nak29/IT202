@@ -46,7 +46,7 @@ elseif($_POST["button"] == "descend"){
         echo $e->getMessage();
     }
 }
-elseif(isset($search) && ($_POST["button"] == "search")) {
+else{
 
     require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
