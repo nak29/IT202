@@ -75,7 +75,7 @@
         function bounceBall() {
             // Increase and reverse the X speed
             if (ball.sX > 0) {
-                ball.sX += Math.random(4)+2;
+                ball.sX += Math.random()*10;
                 // Add some "spin"
                 if (keys.UP) {
                     ball.sY -= 1;
