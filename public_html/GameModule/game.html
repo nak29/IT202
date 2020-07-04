@@ -21,6 +21,14 @@
         var UP = 38;
         var DOWN = 40;
 
+        // define our colors
+        var colors = ["#CCCCCC","#333333","#990099"];
+        // get a reference to <div id="mybox"></div>
+        var myCanvas;
+        // get a random color from list
+        var rand;
+
+
         // Keep track of pressed keys
         var keys = {
             W: false,
@@ -90,23 +98,11 @@
             ball.sX *= -1;
             changeColor();
         }
-        function changeBack(paddle){
-            if(ball.x < 50) {
-                paddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#BC0000');
-            }
-            if(ball.x > canvas.height - 50){
-                paddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#0000BC');
-            }
-        }
+
         function changeColor(){
-            if(ball.x < 50){
-                leftPaddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#ffff00');
-                setTimeout(changeBack(leftPaddle), 30);
-            }
-            if(ball.x > canvas.height - 50){
-                rightPaddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#ffff00');
-                setTimeout(changeBack(rightPaddle), 30);
-            }
+            myCanvas  = document.getElementById("canvas");
+            rand = Math.floor(Math.random()*colors.length);
+            myCanvas.style.borderColor = colors[rand];
         }
         function attachKeyListeners() {
             // Listen for keydown events
@@ -264,7 +260,7 @@
 <body onload="init();">
 <a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
 <main>
-    <canvas id="board" width="600px" height="600px" style="border: 1px solid black;">
+    <canvas id="board" width="600px" height="600px" style="border: 5px solid black;">
 
     </canvas>
 </main>
