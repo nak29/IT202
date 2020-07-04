@@ -177,9 +177,12 @@
             // Move the ball
             ball.x += ball.sX;
             ball.y += ball.sY;
-            // The ball will now phase thru the top and bottom walls
-            if (ball.y < 0 || ball.y + ball.h > canvas.height) {
-                ball.y *= -1;
+            // Bounce the ball off the top/bottom
+            if (ball.y + ball.h > canvas.height) {
+                ball.y = canvas.height - ball.w;
+            }
+            else {
+                ball.y = 0;
             }
         }
         function checkPaddleCollision() {
