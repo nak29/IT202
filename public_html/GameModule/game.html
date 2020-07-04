@@ -22,11 +22,11 @@
         var DOWN = 40;
 
         // define our colors
-        var colors = ["#CCCCCC","#333333","#990099"];
+        //var colors = ["#CCCCCC","#333333","#990099"];
         // get a reference to <div id="mybox"></div>
-        var myCanvas;
+        //var myCanvas;
         // get a random color from list
-        var rand;
+        //var rand;
 
 
         // Keep track of pressed keys
@@ -98,11 +98,13 @@
             ball.sX *= -1;
             changeColor();
         }
-
         function changeColor(){
-            myCanvas  = document.getElementById("canvas");
-            rand = Math.floor(Math.random()*colors.length);
-            myCanvas.style.borderColor = colors[rand];
+            $(".canvas").each(function(){
+                var colors = ["#CCCCCC","#333333","#990099"];
+                var rand = Math.floor(Math.random()*colors.length);
+                $(this).css("borderColor", colors[rand]);
+            });
+
         }
         function attachKeyListeners() {
             // Listen for keydown events
