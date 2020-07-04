@@ -13,7 +13,8 @@
         var paddleHeight = 100;
         var ballSize = 10;
         var ballSpeed = 2;
-        var paddleSpeed = 26;
+        var userPaddleSpeed = 2;
+        var aiPaddleSpeed = 1.5
         var drawables = [];
         // Key Codes
         var W = 87;
@@ -155,25 +156,25 @@
             if (ball.x >= canvas.width * .6) {
                 let paddleHalf = paddleHeight / 2;
                 if (ball.y > rightPaddle.y + paddleHalf) {
-                    rightPaddle.y += rightPaddle.s;
+                    rightPaddle.y += rightPaddle.s * aiPaddleSpeed;
                 } else if (ball.y < rightPaddle.y) {
-                    rightPaddle.y -= rightPaddle.s;
+                    rightPaddle.y -= rightPaddle.s * aiPaddleSpeed;
                 }
             }
             clampToCanvas(rightPaddle);
         }
         function movePaddle() {
             if (keys.W) {
-                leftPaddle.y -= leftPaddle.s;
+                leftPaddle.y -= leftPaddle.s *userPaddleSpeed;
             }
             if (keys.S) {
-                leftPaddle.y += leftPaddle.s;
+                leftPaddle.y += leftPaddle.s *userPaddleSpeed;
             }
             if (keys.UP) {
-                leftPaddle.y -= leftPaddle.s;
+                leftPaddle.y -= leftPaddle.s *userPaddleSpeed;
             }
             if (keys.DOWN) {
-                leftPaddle.y += leftPaddle.s;
+                leftPaddle.y += leftPaddle.s *userPaddleSpeed;
             }
             clampToCanvas(leftPaddle);
         }
