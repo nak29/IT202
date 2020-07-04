@@ -179,10 +179,10 @@
             ball.y += ball.sY;
             // Bounce the ball off the top/bottom
             if (ball.y + ball.h > canvas.height) {
-                ball.y = 0;
+                ball.y = 2;
             }
             else {
-                ball.y = canvas.height - ball.w;
+                ball.y = canvas.height - ball.w - 2;
             }
         }
         function checkPaddleCollision() {
