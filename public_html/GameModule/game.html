@@ -96,7 +96,6 @@
                 }
             }
             ball.sX *= -1;
-            changeColor();
         }
         function changeColor(){
             $(".canvas").each(function(){
@@ -216,6 +215,7 @@
                     bounceBall();
                 }
             }
+            changeColor();
         }
         function checkScore() {
             // Score if the ball goes past a paddle
