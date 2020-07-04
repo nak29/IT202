@@ -101,11 +101,11 @@
         function changeColor(){
             if(ball.x < 50){
                 leftPaddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#ffff00');
-                setTimeout(changeBack(leftPaddle));
+                setTimeout(changeBack(leftPaddle), 30);
             }
             if(ball.x > canvas.height - 50){
                 rightPaddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#ffff00');
-                setTimeout(changeBack(rightPaddle));
+                setTimeout(changeBack(rightPaddle), 30);
             }
         }
         function attachKeyListeners() {
