@@ -21,11 +21,8 @@
         var UP = 38;
         var DOWN = 40;
 
-        // define our colors
+        // define our colors for border change
         var colors = ["#CCCCCC","#0080ff","#ba00ba", "#ff884a", "#259a00"];
-        // get a reference to <div id="mybox"></div>
-        //var myCanvas;
-        // get a random color from list
         var rand;
 
 
@@ -81,9 +78,9 @@
                 ball.sX += 1;
                 // Add some "spin"
                 if (keys.UP) {
-                    ball.sY -= 1;
+                    ball.sY -= Math.random();
                 } else if (keys.DOWN) {
-                    ball.sY += 1;
+                    ball.sY += Math.random();
                 }
             }
             else {
