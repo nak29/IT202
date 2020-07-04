@@ -22,11 +22,11 @@
         var DOWN = 40;
 
         // define our colors
-        //var colors = ["#CCCCCC","#333333","#990099"];
+        var colors = ["#CCCCCC","#333333","#990099"];
         // get a reference to <div id="mybox"></div>
         //var myCanvas;
         // get a random color from list
-        //var rand;
+        var rand;
 
 
         // Keep track of pressed keys
@@ -95,16 +95,13 @@
                     ball.sY += 1
                 }
             }
+            changeColor();
             ball.sX *= -1;
         }
         function changeColor(){
-            $(".canvas").each(function(){
-                var colors = ["#CCCCCC","#333333","#990099"];
-                var rand = Math.floor(Math.random()*colors.length);
+                rand = Math.floor(Math.random()*colors.length);
                 canvas.style.background = colors[rand];
-            });
-
-        }
+            }
         function attachKeyListeners() {
             // Listen for keydown events
             window.addEventListener('keydown', function (e) {
@@ -215,7 +212,6 @@
                     bounceBall();
                 }
             }
-            changeColor();
         }
         function checkScore() {
             // Score if the ball goes past a paddle
