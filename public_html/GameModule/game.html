@@ -50,6 +50,7 @@
             }
         }
         function resetBall() {
+
             ball.x = canvas.width / 2 - ball.w / 2;
             ball.y = canvas.height / 2 - ball.w / 2;
             // Modify the ball object to have two speed properties, one for X and one for Y
@@ -76,7 +77,8 @@
                 } else if (keys.DOWN) {
                     ball.sY += 1;
                 }
-            } else {
+            }
+            else {
                 ball.sX -= 1;
                 // Add some "spin"
                 if (keys.W) {
@@ -86,6 +88,25 @@
                 }
             }
             ball.sX *= -1;
+            changeColor();
+        }
+        function changeBack(var paddle){
+            if(ball.x < 50) {
+                paddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#BC0000');
+            }
+            if(ball.x > canvas.height - 50){
+                paddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#0000BC');
+            }
+        }
+        function changeColor(){
+            if(ball.x < 50){
+                leftPaddle = makeRect(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#ffff00');
+                setTimeout(changeBack(leftPaddle));
+            }
+            if(ball.x > canvas.height - 50){
+                rightPaddle = makeRect(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, '#ffff00');
+                setTimeout(changeBack(rightPaddle));
+            }
         }
         function attachKeyListeners() {
             // Listen for keydown events
