@@ -179,9 +179,9 @@
             ball.y += ball.sY;
             // Bounce the ball off the top/bottom
             if (ball.y + ball.h > canvas.height) {
-                ball.y = 50;
+                ball.y = 2;
             }
-            else {
+            if (ball.y < 0){
                 ball.y = canvas.height - ball.w - 2;
             }
         }
