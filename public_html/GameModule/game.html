@@ -102,7 +102,7 @@
             $(".canvas").each(function(){
                 var colors = ["#CCCCCC","#333333","#990099"];
                 var rand = Math.floor(Math.random()*colors.length);
-                $(this).css("borderColor", colors[rand]);
+                canvas.style.background = colors[rand];
             });
 
         }
