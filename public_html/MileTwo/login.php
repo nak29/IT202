@@ -37,7 +37,7 @@ if(isset($_POST["login"])){
                 if ($result){
                     $rpassword = $result["password"];
                     if(password_verify($password, $rpassword)){
-                        echo "<div>Passwords matched! You are technically logged in!</div>";
+                        echo "<div>Passwords matched! Welcome!</div>";
                         $_SESSION["user"] = array(
                             "id"=>$result["id"],
                             "email"=>$result["email"],
@@ -51,7 +51,6 @@ if(isset($_POST["login"])){
                 else{
                     echo "<div>Invalid user</div>";
                 }
-                //echo "<div>Successfully registered!</div>";
             }
         }
         catch (Exception $e){
