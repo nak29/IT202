@@ -17,7 +17,6 @@ title {
     font-family: "Georgia", serif;
 }
 h4 {
-    padding: 10px;
     text-align: left;
     color: #6588c9;
     font-size: 48px;
@@ -33,7 +32,6 @@ ul.mymain {
     font-family: "Roboto Black", serif;
 }
 label {
-    padding: 4px;
     text-align: left;
     color: #2d5eb3;
     font-size: 24px;
