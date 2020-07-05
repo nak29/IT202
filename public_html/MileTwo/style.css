@@ -1,0 +1,34 @@
+input {
+    background-color: #fff1e8;
+}
+label {
+    border: 4px black;
+    text-align: left;
+}
+p {
+    font-size: 28px;
+
+}
+form {
+    margin-top: 5%;
+    text-align: left;
+}
+title {
+    font-family: "Georgia", serif;
+}
+h4 {
+    padding: 10px;
+    text-align: left;
+    color: #6588c9;
+    font-size: 48px;
+}
+li {
+    list-style-type: square;
+    font-weight: lighter;
+    font-family: "Roboto Black", serif;
+}
+ul.mymain {
+    list-style-type: square;
+    font-weight: lighter;
+    font-family: "Roboto Black", serif;
+}
