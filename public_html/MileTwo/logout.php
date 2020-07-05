@@ -1,3 +1,4 @@
+<h4>Goodbye!</h4>
 <?php
 include("header.php");
 //session_start();//called from header.php
