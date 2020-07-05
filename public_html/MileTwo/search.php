@@ -1,21 +1,21 @@
-<?php include("header.php");?>
+<link rel="stylesheet" type="text/css" href="style.css">
 <?php
 $search = "";
 if(isset($_POST["search"])){
     $search = $_POST["search"];
 }
 ?>
-    <form method="POST">
-        <input type="text" name="search" placeholder="Search Products"
-               value="<?php echo $search;?>"/>
-        <input type="radio" name='button' value="search" id="1">
-        <label for="Search">Search</label>
-        <input type="radio" name='button' value='ascend' id="2">
-        <label for="Ascending Order">Ascending Order</label>
-        <input type="radio" name='button' value='descend' id="3">
-        <label for="Descending Order">Descending Order</label>
-        <input type="submit" value="Submit"/>
-    </form>
+<form method="POST">
+    <input type="text" name="search" placeholder="Search Products"
+           value="<?php echo $search;?>"/>
+    <input type="radio" name='button' value="search" id="1">
+    <label for="Search">Search</label>
+    <input type="radio" name='button' value='ascend' id="2">
+    <label for="Ascending Order">Ascending Order</label>
+    <input type="radio" name='button' value='descend' id="3">
+    <label for="Descending Order">Descending Order</label>
+    <input type="submit" value="Submit"/>
+</form>
 
 <?php
 if($_POST["button"] == "ascend"){
@@ -63,9 +63,9 @@ else{
     }
 }
 ?>
-    <!--This part will introduce us to PHP templating,
-    note the structure and the ":" -->
-    <!-- note how we must close each check we're doing as well-->
+<!--This part will introduce us to PHP templating,
+note the structure and the ":" -->
+<!-- note how we must close each check we're doing as well-->
 <?php if(isset($results) && count($results) > 0):?>
     <p>This shows when we have results</p>
     <ul>
