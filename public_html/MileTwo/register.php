@@ -37,12 +37,12 @@ if(isset($_POST["register"])){
             try{
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $hash = password_hash($password, PASSWORD_BCRYPT);
-                $stmt = $db->prepare("INSERT INTO Users (email, password, fname, sname) VALUES(:email, :password, :first_name, :last_name)");
+                $stmt = $db->prepare("INSERT INTO Users (email, password, first_name, last_name) VALUES(:email, :password, :fname, :sname)");
                 $stmt->execute(array(
                     ":email" => $email,
                     ":password" => $hash,//Don't save the raw password $password
-                    ":first_name" => $fname,
-                    ":last_name" => $sname
+                    ":fname" => $fname,
+                    ":sname" => $sname
                 ));
                 $e = $stmt->errorInfo();
                 if($e[0] != "00000"){
