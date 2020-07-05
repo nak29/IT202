@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="style.css">
-<?php include("header.php");?>
 <?php
 $search = "";
 if(isset($_POST["search"])){
