@@ -10,6 +10,12 @@
     <label for="cp">Confirm Password
         <input type="password" id="cp" name="cpassword"/>
     </label>
+    <label for="fname">First Name
+        <input type="text" id="fname" name="fname"/>
+    </label>
+    <label for="sname">Last Name
+        <input type="text" id="sname" name="sname"/>
+    </label>
     <input type="submit" name="register" value="Register"/>
 </form>
 
@@ -22,6 +28,8 @@ if(isset($_POST["register"])){
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         $email = $_POST["email"];
+        $fname = $_POST["fname"];
+        $sname = $_POST["sname"];
         if($password == $cpassword){
             //echo "<div>Passwords Match</div>";
             require("config.php");
@@ -29,10 +37,12 @@ if(isset($_POST["register"])){
             try{
                 $db = new PDO($connection_string, $dbuser, $dbpass);
                 $hash = password_hash($password, PASSWORD_BCRYPT);
-                $stmt = $db->prepare("INSERT INTO Users (email, password) VALUES(:email, :password)");
+                $stmt = $db->prepare("INSERT INTO Users (email, password, fname, sname) VALUES(:email, :password, first_name, last_name)");
                 $stmt->execute(array(
                     ":email" => $email,
-                    ":password" => $hash//Don't save the raw password $password
+                    ":password" => $hash,//Don't save the raw password $password
+                    ":first_name" => $fname,
+                    ":last_name" => $sname
                 ));
                 $e = $stmt->errorInfo();
                 if($e[0] != "00000"){
