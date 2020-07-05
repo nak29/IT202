@@ -49,7 +49,7 @@ if(isset($_POST["register"])){
                     echo var_export($e, true);
                 }
                 else{
-                    echo "<div>Successfully registered!</div>";
+                    echo "<div>Successfully registered! Welcome " . $fname . "!</div>";
                 }
             }
             catch (Exception $e){
