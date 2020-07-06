@@ -48,7 +48,7 @@ if(isset($_POST["delete"])){
             if ($e[0] != "00000") {
                 echo var_export($e, true);
             } else {
-                echo var_export($result, true);
+                //echo var_export($result, true);
                 if ($result) {
                     echo "Successfully deleted: " . $product;
                 } else {
