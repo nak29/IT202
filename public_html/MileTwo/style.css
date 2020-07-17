@@ -1,5 +1,5 @@
 input {
-    background-color: #fff1e8;
+    background-color: #ffc49c;
 }
 label {
     border: 4px black;
@@ -40,7 +40,5 @@ label {
     font-size: 24px;
     margin-top: 5px;
     padding: 5px;
-    background-color: #6588c9;
-    background-position: inherit;
     color: #000000;
 }
