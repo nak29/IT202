@@ -2,7 +2,5 @@
 include("header.php");
 
 ?>
-    <h4>Home</h4>
-<?php echo "Welcome " . $_SESSION["user"]["email"];?>
-
-<p class="welcome">"Welcome"</p>
+<h4>Home</h4>
+<p class="welcome"><?php echo "Welcome " . $_SESSION["user"]["first_name"];?></p>
