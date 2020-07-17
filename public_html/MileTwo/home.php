@@ -1,6 +1,5 @@
 <?php
 include("header.php");
-include("style.css");
 
 ?>
 <h4>Home</h4>
