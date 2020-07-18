@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php
-require_once("config.php");
+require("config.php");
 session_start();
 ?>
 <nav>
