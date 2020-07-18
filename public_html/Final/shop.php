@@ -1,5 +1,6 @@
 <?php
-
+include("config.php");
+include("common.inc.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
 try {
