@@ -21,8 +21,8 @@ if(isset($_POST["search"])){
 </form>
 
 <?php
+require("common.inc.php");
 if($_POST["button"] == "ascend"){
-    require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
     try {
@@ -34,7 +34,6 @@ if($_POST["button"] == "ascend"){
     }
 }
 elseif($_POST["button"] == "descend"){
-    require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/DESCEND_TABLE_PRODUCTS.sql");
 
     try {
@@ -47,7 +46,6 @@ elseif($_POST["button"] == "descend"){
 }
 elseif($_POST["button"] == "search"){
 
-    require("common.inc.php");
     $query = file_get_contents(__DIR__ . "/queries/SEARCH_TABLE_PRODUCTS.sql");
     if (isset($query) && !empty($query)) {
         try {
