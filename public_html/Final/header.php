@@ -1,8 +1,9 @@
 <head>
     <title>Nick K's Site</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php
-require("config.php");
+require_once("config.php");
 session_start();
 ?>
 <nav>
