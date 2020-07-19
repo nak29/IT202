@@ -2,9 +2,9 @@
 include(__DIR__ . "/header.php");
 //session_start();
 if (isset($_SESSION["user"])):?>
-    <p>"You aren't logged in but..."</p>
-<?php else:?>
     <p>"Logging out..."</p>
+<?php else:?>
+    <p>"You aren't logged in but..."</p>
 <?php endif;?>
 <?php
 session_unset();
