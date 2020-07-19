@@ -1,6 +1,5 @@
 <?php
 $cleardb_url      = parse_url(getenv("JAWSDB_URL"));
-echo(print_r($cleardb_url));
 $dbhost   = $cleardb_url["host"];
 $dbuser = $cleardb_url["user"];
 $dbpass = $cleardb_url["pass"];
