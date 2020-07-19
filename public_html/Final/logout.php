@@ -3,7 +3,7 @@ include(__DIR__ . "/header.php");
 session_start();
 if (isset($_SESSION)):?>
     <p>"You aren't logged in but..."</p>
-<?php endif;?>
+<?php endif;
 session_unset();
 session_destroy();
 //echo "You have been logged out. ";
