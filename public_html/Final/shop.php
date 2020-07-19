@@ -7,6 +7,7 @@ $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 $results = array();
 try {
     $stmt = getDB()->prepare($query);
+    $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo print_r($results);
     }
