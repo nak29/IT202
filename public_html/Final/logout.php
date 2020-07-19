@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . "/header.php");
-//session_start();//called from header.php
+session_start();
 if (isset($_SESSION)):?>
     <p>"You aren't logged in but..."</p>
 <?php endif;?>
