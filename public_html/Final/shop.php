@@ -1,6 +1,4 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 1);
 include(__DIR__ . "/header.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
@@ -9,7 +7,6 @@ try {
     $stmt = getDB()->prepare($query);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo print_r($results);
     }
 catch (Exception $e) {
     echo $e->getMessage();
