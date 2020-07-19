@@ -43,6 +43,7 @@ if(isset($_POST["login"])){
                 if ($result){
                     $rpassword = $result["password"];
                     if(password_verify($password, $rpassword)){
+                        echo print_r($result);
                         $_SESSION["user"] = array(
                             "id"=>$result["id"],
                             "email"=>$result["email"],
