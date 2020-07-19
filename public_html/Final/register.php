@@ -1,4 +1,4 @@
-<?php include("header.php");?>
+<?php require("header.php");?>
 <h4>Register</h4>
 <form method="POST">
     <label for="email">Email
@@ -32,7 +32,6 @@ if(isset($_POST["register"])){
         $sname = $_POST["sname"];
         if($password == $cpassword){
             //echo "<div>Passwords Match</div>";
-            require("config.php");
             $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
             try{
                 $db = new PDO($connection_string, $dbuser, $dbpass);

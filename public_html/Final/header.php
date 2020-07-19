@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php
-require("common.inc.php");
+include("common.inc.php");
 session_start();
 ?>
 <nav>
