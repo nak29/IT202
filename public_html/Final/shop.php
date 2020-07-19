@@ -6,7 +6,7 @@ $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
 $results = array();
 try {
-    require(__DIR__ . "common.inc.php");
+    require(__DIR__ . "/common.inc.php");
     $stmt = getDB()->prepare($query);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
