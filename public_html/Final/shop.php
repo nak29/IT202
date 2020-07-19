@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 include("header.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
+$results = array();
 try {
     require("common.inc.php");
     $stmt = getDB()->prepare($query);
