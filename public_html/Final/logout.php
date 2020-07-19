@@ -1,9 +1,12 @@
 <?php
 include(__DIR__ . "/header.php");
-session_start();
-if (isset($_SESSION)):?>
+//session_start();
+if (isset($_SESSION["user"])):?>
     <p>"You aren't logged in but..."</p>
-<?php endif;
+<?php else:?>
+    <p>"Logging out..."</p>
+<?php endif;?>
+<?php
 session_unset();
 session_destroy();
 //echo "You have been logged out. ";
