@@ -12,6 +12,9 @@ session_start();
             <a href="home.php">Home</a>
         </li>
         <li>
+            <a href="shop.php">Shop</a>
+        </li>
+        <li>
             <a href="login.php">Login</a>
         </li>
         <li>
