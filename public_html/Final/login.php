@@ -49,7 +49,7 @@ if(isset($_POST["login"])){
                             "email"=>$result["email"],
                             "first_name"=>$result["first_name"],
                             "last_name"=>$result["last_name"]);
-                        echo "<div>Passwords matched! Welcome " . $_SESSION["first_name"] . "</div>";
+                        echo "<div>Passwords matched! Welcome " . $_SESSION["user"]["first_name"] . "</div>";
                     }
                     else{
                         echo "<div>Invalid password!</div>";
