@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <?php
-require("header.php");
+require(__DIR__ . "/header.php");
 $search = "";
 if(isset($_POST["search"])){
     $search = $_POST["search"];

@@ -1,5 +1,5 @@
 <?php
-require("header.php");
+require(__DIR__ . "/header.php");
 ?>
 <h4>Login</h4>
 <form method="POST">

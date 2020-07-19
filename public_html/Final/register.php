@@ -1,4 +1,4 @@
-<?php require("header.php");?>
+<?php require(__DIR__ . "/header.php");?>
 <h4>Register</h4>
 <form method="POST">
     <label for="email">Email

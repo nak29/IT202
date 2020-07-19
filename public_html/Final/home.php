@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include(__DIR__ . "/header.php");
 
 ?>
 <h4>Home</h4>
