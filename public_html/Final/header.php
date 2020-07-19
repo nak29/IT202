@@ -3,6 +3,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php
+error_reporting(-1);
+ini_set('display_errors', 1);
 include("common.inc.php");
 session_start();
 ?>
