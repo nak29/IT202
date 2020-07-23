@@ -6,7 +6,7 @@
 //HELPS A WHOLE FUCcKIGN LOT DONT GET RID OF
 error_reporting(-1);
 ini_set('display_errors', 1);
-include("common.inc.php");
+include(__DIR__ . "/common.inc.php");
 session_start();
 ?>
 <nav>
