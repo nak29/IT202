@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+require(__DIR__ . "/config.php");
 
 
 function get($arr, $key){
