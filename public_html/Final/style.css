@@ -46,3 +46,13 @@ label {
 #shop {
     font-size: 60px;
 }
+#pname {
+    font-size: 60px;
+    font-family: "Roboto Black", serif;
+    font-weight: bold;
+}
+#pdesc {
+    font-size: 32px;
+    font-family: "Roboto Black", serif;
+    color: #1a1a1a;
+}

@@ -2,6 +2,22 @@
 include(__DIR__ . "/header.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
+$thingId = -1;
+if(isset($_GET["thingId"])) {
+    $thingId = $_GET["thingId"];
+    $stmt = $db->prepare("SELECT * FROM Products where id = :id");
+    $stmt->execute([":id" => $thingId]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC); ?>
+<p id="pname"> <?php echo get($thingId, "product")?> </p>
+
+    <?php
+
+
+    ?>
+<hr>
+<?php
+}
+
 $results = array();
 try {
     $stmt = getDB()->prepare($query);
