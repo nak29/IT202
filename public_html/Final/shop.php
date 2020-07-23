@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . "/header.php");
+require(__DIR__ . "/header.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
 $thingId = -1;
