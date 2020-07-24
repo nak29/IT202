@@ -39,15 +39,15 @@ label {
     color: #000000;
     font-family: "Roboto Black", serif;
 }
-#shop {
+ul.shop {
     font-size: 32px;
 }
-.pname {
+p.pname {
     font-size: 60px;
     font-family: "Roboto Black";
     font-weight: bold;
 }
-.pdesc {
+p.pdesc {
     font-size: 44px;
     font-family: "Roboto Black", serif;
     color: #1a1a1a;
