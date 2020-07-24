@@ -12,7 +12,7 @@ if(isset($_GET["thingId"])) {
     $stmt = $db->prepare("SELECT * FROM Products where id = :id");
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $pname = get($thingId, "product");?>
+    $pname = get($result, "product");?>
 <p id="pname"> <?php echo $pname;?> </p>
 
     <?php
