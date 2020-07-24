@@ -47,12 +47,12 @@ label {
     font-size: 60px;
 }
 #pname {
-    font-size: 60px;
+    font-size: 48px;
     font-family: "Roboto Black", serif;
     font-weight: bold;
 }
 #pdesc {
-    font-size: 32px;
+    font-size: 48px;
     font-family: "Roboto Black", serif;
     color: #1a1a1a;
 }
