@@ -13,12 +13,10 @@ if(isset($_GET["thingId"])) {
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
 
-<p id="pname"> <?php echo get($result, "product");?> </p>
+    <p id="pname"> <?php echo get($result, "product");?> </p>
 
-    <?php
+    <p id="pdesc"> <?php echo get($result, "description");?> </p>
 
-
-    ?>
 <hr>
 <?php
 }
