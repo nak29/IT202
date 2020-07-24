@@ -44,15 +44,15 @@ label {
     font-family: "Roboto Black", serif;
 }
 #shop {
-    font-size: 60px;
+    font-size: 48px;
 }
 #pname {
-    font-size: 48px;
+    font-size: 60px;
     font-family: "Roboto Black", serif;
     font-weight: bold;
 }
 #pdesc {
-    font-size: 48px;
+    font-size: 44px;
     font-family: "Roboto Black", serif;
     color: #1a1a1a;
 }
