@@ -48,7 +48,7 @@ label {
 }
 #pname {
     font-size: 60px;
-    font-family: "Roboto Black", serif;
+    font-family: "Roboto Black";
     font-weight: bold;
 }
 #pdesc {
