@@ -41,6 +41,7 @@ label {
 }
 ul.shop {
     font-size: 32px;
+    padding-top: 100px;
 }
 p{
 
@@ -53,5 +54,6 @@ p.pname {
 p.pdesc {
     font-size: 44px;
     font-family: "Roboto Black", serif;
-    color: #1a1a1a;
+    color: #282828;
+    padding-left: 75px;
 }
