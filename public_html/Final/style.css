@@ -40,7 +40,7 @@ label {
     font-family: "Roboto Black", serif;
 }
 ul.shop {
-    font-size: 32px;
+    font-size: 26px;
     padding-top: 100px;
 }
 p{
@@ -52,7 +52,7 @@ p.pname {
     font-weight: bold;
 }
 p.pdesc {
-    font-size: 44px;
+    font-size: 32px;
     font-family: "Roboto Black", serif;
     color: #282828;
     padding-left: 75px;
