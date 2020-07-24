@@ -4,4 +4,5 @@ $dbhost   = $cleardb_url["host"];
 $dbuser = $cleardb_url["user"];
 $dbpass = $cleardb_url["pass"];
 $dbdatabase       = substr($cleardb_url["path"],1);
+echo "hi";
 ?>
