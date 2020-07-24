@@ -3,6 +3,7 @@ require(__DIR__ . "/header.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
 $thingId = -1;
+$result = array();
 if(isset($_GET["thingId"])) {
     $thingId = $_GET["thingId"];
     $stmt = $db->prepare("SELECT * FROM Products where id = :id");
