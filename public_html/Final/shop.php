@@ -31,7 +31,7 @@ catch (Exception $e) {
     echo $e->getMessage();
 }
 ?>
-<ul id="shop">
+<ul class="shop">
 
     <?php foreach($results as $row):?>
         <li>
