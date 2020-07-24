@@ -1,6 +1,6 @@
 <head>
     <title>Nick K's Site</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css">
 </head>
 <?php
 //HELPS A WHOLE FUCcKIGN LOT DONT GET RID OF
