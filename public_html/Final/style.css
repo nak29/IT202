@@ -42,12 +42,12 @@ label {
 #shop {
     font-size: 32px;
 }
-#pname {
+.pname {
     font-size: 60px;
     font-family: "Roboto Black";
     font-weight: bold;
 }
-#pdesc {
+.pdesc {
     font-size: 44px;
     font-family: "Roboto Black", serif;
     color: #1a1a1a;
