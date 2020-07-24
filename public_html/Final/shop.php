@@ -2,6 +2,9 @@
 require(__DIR__ . "/header.php");
 $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 
+$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+$db = new PDO($connection_string, $dbuser, $dbpass);
+
 $thingId = -1;
 $result = array();
 if(isset($_GET["thingId"])) {
