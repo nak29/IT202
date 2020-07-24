@@ -11,9 +11,9 @@ if(isset($_GET["thingId"])) {
     $thingId = $_GET["thingId"];
     $stmt = $db->prepare("SELECT * FROM Products where id = :id");
     $stmt->execute([":id" => $thingId]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $pname = get($result, "product");?>
-<p id="pname"> <?php echo $pname;?> </p>
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
+
+<p id="pname"> <?php echo get($result, "product");?> </p>
 
     <?php
 
