@@ -76,7 +76,7 @@ if(isset($_GET["thingId"])) {
                         }
                     }
                     else {
-                        ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
+                        ?><p class="error"><?php echo "Log in to remove items from cart!"?></p><?php;
                     }
                 }
             }
@@ -94,6 +94,8 @@ if(isset($_GET["thingId"])) {
         ?>
         <input type="submit" name="remove" value="Remove from cart"/>
 <?php   }?>
+
+        <p>Current Quantity: <?php echo get($checkIfOverZero, "quantity")?></p>
     </form>
 <?php
 }
