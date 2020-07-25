@@ -3,9 +3,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php
-//HELPS A WHOLE FUCcKIGN LOT DONT GET RID OF
-//error_reporting(-1);
-//ini_set('display_errors', 1);
+//HELPS A WHOLE LOT DONT GET RID OF
+error_reporting(-1);
+ini_set('display_errors', 1);
 require(__DIR__ . "/common.inc.php");
 session_start();
 ?>
