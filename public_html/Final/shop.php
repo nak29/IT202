@@ -18,7 +18,7 @@ if(isset($_GET["thingId"])) {
 
         <p class="pdesc"> <?php echo get($result, "description");?> </p>
 
-        <input type="submit" id="add" value="Add to cart"/>
+        <input type="submit" name="add" value="Add to cart"/>
     </form>
 
     <hr>
