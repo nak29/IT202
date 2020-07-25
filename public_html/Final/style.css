@@ -58,11 +58,14 @@ p.pdesc {
     padding-left: 75px;
 }
 p.error {
-    font-size: 50px;
+    font-size: 40px;
     font-family: "Roboto Black";
-    font-weight: bold;
     color: #000000;
     background: #ff0055;
     border: double #000000;
-    position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    text-align: center;
 }
