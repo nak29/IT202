@@ -51,7 +51,7 @@ catch (Exception $e) {
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "server req worked  ";
-    if (isset($_POST['add'])) {
+    if (isset($_POST["add"])) {
         echo "post add worked  ";
         if($thingId != -1) {
             echo "thingId not 1 worked  ";
