@@ -16,7 +16,7 @@ if(isset($_GET["thingId"])) {
     <form method="POST" action="shop.php?thingId=<?php echo get($result, "id")?>">
         <p class="pname"> <?php echo get($result, "product");?> - $<?php echo get($result, "price");?> </p>
 
-        <p class="pdesc"> <?php echo get($result, "description");?> <br><br> Current Quantity: <?php echo get($result, "quantity")?></p>
+        <p class="pdesc"> <?php echo get($result, "description");?> <br><br>Current Quantity: <?php echo get($result, "quantity")?></p>
 
         <input type="submit" name="add" value="Add to cart"/>
 
