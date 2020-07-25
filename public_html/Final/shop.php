@@ -19,6 +19,17 @@ if(isset($_GET["thingId"])) {
         <p class="pdesc"> <?php echo get($result, "description");?> </p>
 
         <input type="submit" name="add" value="Add to cart"/>
+
+        <?php //making sure it's okay to add a remove button
+        $stmt = $db->prepare("SELECT count(1) FROM Cart where product_id = :id and user_id = :uid");
+        $stmt->execute([":id" => $thingId, ":uid" => $user_id]);
+        $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($checkIfOverZero["quantity"] > 0){
+
+        ?>
+        ?><input type="submit" name="remove" value="Add to cart"/>
+<?php   }?>
     </form>
 <?php
 }
@@ -49,6 +60,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         //pass st as single item price
                         //DB should increment quantity by value and use the quantity * price to get subtotal
                         //TODO not sure if subtotal will be calced before or after the quantity update
+                        $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
+                    }
+                }
+            }
+            else {
+                ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
+            }
+        }
+    }
+    elseif (isset($_POST["remove"])) {
+        if ($thingId != -1) {
+            if (isset($_SESSION["user"])) {
+                if ($_POST["remove"]) {
+                    $user_id = $_SESSION["user"]["id"];
+                    $product_id = $_GET["thingId"];
+                    $price = get($result, "price");
+                    $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
+                    $stmt->execute([":uid" => $user_id, ":pid" => $product_id]);
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $num = (int)$result["num"];
+
+                    if ($num <= 0) {
+                        //remove 1
+                        $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity - :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
                         $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
                     }
                 }
