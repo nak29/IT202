@@ -21,12 +21,11 @@ if(isset($_GET["thingId"])) {
         <input type="submit" name="add" value="Add to cart"/>
 
         <?php //making sure it's okay to add a remove button
-        echo 1;
-        $stmt = $db->prepare("SELECT FROM Cart where product_id = :id and user_id = :uid");
-        if (isset($_SESSION["user"])) {echo 2;}
+
+        $stmt = $db->prepare("SELECT * FROM Cart where product_id = :id and user_id = :uid");
         $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
-        echo 3;
         $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
+
         echo (get($checkIfOverZero, "quantity"));
         if(get($checkIfOverZero, "quantity") > 0){
 
