@@ -6,68 +6,6 @@ $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 
 $thingId = -1;
-
-//This is where add to carts are checked
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST["add"])) {
-        if ($thingId != -1) {
-            if (isset($_SESSION["user"])) {
-                if ($_POST["add"]) {
-                    $user_id = $_SESSION["user"]["id"];
-                    $product_id = $_GET["thingId"];
-                    $price = get($result, "price");
-                    $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
-                    $stmt->execute([":uid" => $user_id, ":pid" => $product_id]);
-                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $num = (int)$result["num"];
-
-                    if ($num == 0) {
-                        //insert
-                        $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
-                        $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
-                    }
-                    else {
-                        //update
-                        $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity + :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
-                        //pass q as amount to increment
-                        //pass st as single item price
-                        //DB should increment quantity by value and use the quantity * price to get subtotal
-                        //TODO not sure if subtotal will be calced before or after the quantity update
-                        $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
-                    }
-                }
-            }
-            else {
-                ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
-            }
-        }
-    }
-    elseif (isset($_POST["remove"])) {
-        if ($thingId != -1) {
-            if (isset($_SESSION["user"])) {
-                if ($_POST["remove"]) {
-                    $user_id = $_SESSION["user"]["id"];
-                    $product_id = $_GET["thingId"];
-                    $price = get($result, "price");
-                    $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
-                    $stmt->execute([":uid" => $user_id, ":pid" => $product_id]);
-                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $num = (int)$result["num"];
-
-                    if ($num >= 0) {
-                        //remove 1
-                        $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity - :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
-                        $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
-                    }
-                }
-            }
-            else {
-                ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
-            }
-        }
-    }
-}
-
 $result = array();
 if(isset($_GET["thingId"])) {
     $thingId = $_GET["thingId"];
@@ -82,8 +20,70 @@ if(isset($_GET["thingId"])) {
 
         <input type="submit" name="add" value="Add to cart"/>
 
-        <?php //making sure it's okay to add a remove button
+        <?php
+        //This is where add to carts are checked
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST["add"])) {
+                if ($thingId != -1) {
+                    if (isset($_SESSION["user"])) {
+                        if ($_POST["add"]) {
+                            $user_id = $_SESSION["user"]["id"];
+                            $product_id = $_GET["thingId"];
+                            $price = get($result, "price");
+                            $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
+                            $stmt->execute([":uid" => $user_id, ":pid" => $product_id]);
+                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $num = (int)$result["num"];
 
+                            if ($num == 0) {
+                                //insert
+                                $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
+                                $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
+                            }
+                            else {
+                                //update
+                                $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity + :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
+                                //pass q as amount to increment
+                                //pass st as single item price
+                                //DB should increment quantity by value and use the quantity * price to get subtotal
+                                //TODO not sure if subtotal will be calced before or after the quantity update
+                                $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
+                            }
+                        }
+                    }
+                    else {
+                        ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
+                    }
+                }
+            }
+            elseif (isset($_POST["remove"])) {
+                if ($thingId != -1) {
+                    if (isset($_SESSION["user"])) {
+                        if ($_POST["remove"]) {
+                            $user_id = $_SESSION["user"]["id"];
+                            $product_id = $_GET["thingId"];
+                            $price = get($result, "price");
+                            $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
+                            $stmt->execute([":uid" => $user_id, ":pid" => $product_id]);
+                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                            $num = (int)$result["num"];
+
+                            if ($num >= 0) {
+                                //remove 1
+                                $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity - :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
+                                $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
+                            }
+                        }
+                    }
+                    else {
+                        ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
+                    }
+                }
+            }
+        }
+
+
+        //making sure it's okay to add a remove button
         $stmt = $db->prepare("SELECT * FROM Cart where product_id = :id and user_id = :uid");
         $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
         $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
