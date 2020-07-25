@@ -63,9 +63,11 @@ p.error {
     color: #000000;
     background: #ff0055;
     border: double #000000;
-    position: absolute;
+    border-width: thick;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     text-align: center;
+    margin-right: 30%;
+    margin-left: 30%;
 }
