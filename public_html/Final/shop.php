@@ -20,40 +20,15 @@ if(isset($_GET["thingId"])) {
 
         <input type="submit" name="add" value="Add to cart"/>
     </form>
-
-    <hr>
 <?php
 }
 
-$results = array();
-try {
-    $stmt = getDB()->prepare($query);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-catch (Exception $e) {
-    echo $e->getMessage();
-}
-?>
-<ul class="shop">
-
-    <?php foreach($results as $row):?>
-        <li>
-            <?php echo get($row, "product")?>
-            <?php echo get($row, "price");?>
-            <?php echo get($row, "quantity");?>
-            <?php echo get($row, "id");?>
-            <a href="shop.php?thingId=<?php echo get($row, "id");?>">View</a>
-        </li>
-    <?php endforeach;?>
-</ul>
-
-<?php
+//This is where add to carts are checked
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST["add"])) {
-        if($thingId != -1) {
-            if (isset($_SESSION["user"])){
-                if($_POST["add"]) {
+        if ($thingId != -1) {
+            if (isset($_SESSION["user"])) {
+                if ($_POST["add"]) {
                     $user_id = $_SESSION["user"]["id"];
                     $product_id = $_GET["thingId"];
                     $price = get($result, "price");
@@ -67,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
                         $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
                     }
-
                     else {
                         //update
                         $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity + :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
@@ -80,14 +54,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             else {
-                echo "Log in, dumb fuck.";
+                ?><p>Log in to add items to cart!</p><?php;
             }
         }
     }
-
-    else {
-
-    }
 }
 
+
+$results = array();
+try {
+    $stmt = getDB()->prepare($query);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+catch (Exception $e) {
+    echo $e->getMessage();
+}
 ?>
+<hr>
+<ul class="shop">
+
+    <?php foreach($results as $row):?>
+        <li>
+            <?php echo get($row, "product")?>
+            <?php echo get($row, "price");?>
+            <?php echo get($row, "quantity");?>
+            <?php echo get($row, "id");?>
+            <a href="shop.php?thingId=<?php echo get($row, "id");?>">View</a>
+        </li>
+    <?php endforeach;?>
+</ul>
