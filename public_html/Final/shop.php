@@ -22,7 +22,7 @@ if(isset($_GET["thingId"])) {
 
         <?php //making sure it's okay to add a remove button
         echo 1;
-        $stmt = $db->prepare("SELECT count(1) FROM Cart where product_id = :id and user_id = :uid");
+        $stmt = $db->prepare("SELECT FROM Cart where product_id = :id and user_id = :uid");
         echo 2;
         $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
         echo 3;
