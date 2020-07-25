@@ -22,6 +22,7 @@ if(isset($_GET["thingId"])) {
 
         <?php //making sure it's okay to add a remove button
         $stmt = $db->prepare("SELECT count(1) FROM Cart where product_id = :id and user_id = :uid");
+        $user_id = $_SESSION["user"]["id"];
         $stmt->execute([":id" => $thingId, ":uid" => $user_id]);
         $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
 
