@@ -13,11 +13,15 @@ if(isset($_GET["thingId"])) {
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
 
-    <p class="pname"> <?php echo get($result, "product");?> </p>
+    <form method="POST">
+        <p class="pname"> <?php echo get($result, "product");?> </p>
 
-    <p class="pdesc"> <?php echo get($result, "description");?> </p>
+        <p class="pdesc"> <?php echo get($result, "description");?> </p>
 
-<hr>
+        <input type="submit" value="Add to cart"/>
+    </form>
+
+    <hr>
 <?php
 }
 
@@ -43,3 +47,26 @@ catch (Exception $e) {
         </li>
     <?php endforeach;?>
 </ul>
+
+<?php
+if($_POST){
+    $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
+    $stmt->execute([":uid"=>$user_id, ":pid"=>$product_id]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $num = (int)$result["num"];
+    if($num == 0){
+        //insert
+        $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
+        $stmt->execute([":uid"=>$user_id, ":pid"=>$product_id, ":q"=>1, ":st"=>$price]);
+    }
+    else {
+        //update
+        $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity + :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
+        //pass q as amount to increment
+        //pass st as single item price
+        //DB should increment quantity by value and use the quantity * price to get subtotal
+        //TODO not sure if subtotal will be calced before or after the quantity update
+        $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
+    }
+}
+?>
