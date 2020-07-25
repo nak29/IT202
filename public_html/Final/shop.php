@@ -51,7 +51,8 @@ catch (Exception $e) {
 <?php
 if($_POST["add"]){
     $user_id = $_SESSION["user"]["id"];
-    $product_id = $_GET["product_id"];
+    $product_id = $_GET["thingId"];
+    $price = get($result, "price");
     $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
     $stmt->execute([":uid"=>$user_id, ":pid"=>$product_id]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
