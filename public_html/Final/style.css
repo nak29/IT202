@@ -57,3 +57,11 @@ p.pdesc {
     color: #282828;
     padding-left: 75px;
 }
+p.error {
+    font-size: 50px;
+    font-family: "Roboto Black";
+    font-weight: bold;
+    color: #000000;
+    background: #ff0055;
+    border: double #000000;
+}

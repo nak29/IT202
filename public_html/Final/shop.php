@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             else {
-                ?><p>Log in to add items to cart!</p><?php;
+                ?><p class="error"><?php echo "Log in to add items to cart!"?></p><?php;
             }
         }
     }
