@@ -13,7 +13,7 @@ if(isset($_GET["thingId"])) {
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
 
-    <form action="shop.php">
+    <form action="shop.php?thingId=<?php echo $thingId?>">
         <p class="pname"> <?php echo get($result, "product");?> </p>
 
         <p class="pdesc"> <?php echo get($result, "description");?> </p>
@@ -49,11 +49,14 @@ catch (Exception $e) {
 </ul>
 
 <?php
+$user_id = $_SESSION["user"]["id"];
+$product_id = $_GET["product_id"];
 if($_POST){
     $stmt = getDB()->prepare("SELECT count(*) as num from Cart where user_id = :uid and product_id = :pid");
     $stmt->execute([":uid"=>$user_id, ":pid"=>$product_id]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $num = (int)$result["num"];
+    echo "0";
     if($num == 0){
         //insert
         $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
