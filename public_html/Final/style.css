@@ -64,4 +64,5 @@ p.error {
     color: #000000;
     background: #ff0055;
     border: double #000000;
+    position: center;
 }
