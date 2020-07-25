@@ -28,7 +28,7 @@ if(isset($_GET["thingId"])) {
         if(get($checkIfOverZero, "quantity") > 0){
 
         ?>
-        ?><input type="submit" name="remove" value="Add to cart"/>
+        <input type="submit" name="remove" value="Add to cart"/>
 <?php   }?>
     </form>
 <?php
