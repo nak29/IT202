@@ -24,7 +24,7 @@ if(isset($_GET["thingId"])) {
         $stmt = $db->prepare("SELECT count(1) FROM Cart where product_id = :id and user_id = :uid");
         $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
         $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        echo (get($checkIfOverZero, "quantity");
         if(get($checkIfOverZero, "quantity") > 0){
 
         ?>
