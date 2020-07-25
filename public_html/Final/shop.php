@@ -58,6 +58,7 @@ if($_POST){
         //insert
         $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
         $stmt->execute([":uid"=>$user_id, ":pid"=>$product_id, ":q"=>1, ":st"=>$price]);
+        echo "1";
     }
     else {
         //update
@@ -67,6 +68,7 @@ if($_POST){
         //DB should increment quantity by value and use the quantity * price to get subtotal
         //TODO not sure if subtotal will be calced before or after the quantity update
         $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
+        echo "2";
     }
 }
 ?>
