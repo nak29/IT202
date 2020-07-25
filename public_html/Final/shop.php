@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
                     $num = (int)$result["num"];
 
-                    if ($num <= 0) {
+                    if ($num >= 0) {
                         //remove 1
                         $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity - :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
                         $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
