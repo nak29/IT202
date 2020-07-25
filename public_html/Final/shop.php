@@ -26,7 +26,7 @@ if(isset($_GET["thingId"])) {
         $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
         $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        echo (get($checkIfOverZero, "quantity"));
+        //figuring out if the quantity in the user's cart is greater than 0
         if(get($checkIfOverZero, "quantity") > 0){
 
         ?>
