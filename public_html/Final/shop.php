@@ -13,7 +13,7 @@ if(isset($_GET["thingId"])) {
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
 
-    <form method="POST">
+    <form action="shop.php">
         <p class="pname"> <?php echo get($result, "product");?> </p>
 
         <p class="pdesc"> <?php echo get($result, "description");?> </p>
