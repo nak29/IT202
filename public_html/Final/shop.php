@@ -50,8 +50,11 @@ catch (Exception $e) {
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    echo "server req worked  ";
     if (isset($_POST['add'])) {
+        echo "post add worked  ";
         if($thingId != -1) {
+            echo "thingId not 1 worked  ";
             if($_POST["add"]) {
                 $user_id = $_SESSION["user"]["id"];
                 $product_id = $_GET["thingId"];
@@ -60,12 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([":uid" => $user_id, ":pid" => $product_id]);
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 $num = (int)$result["num"];
-                echo "0";
+                echo "0 ";
                 if ($num == 0) {
                     //insert
                     $stmt = getDB()->prepare("INSERT INTO Cart (product_id, user_id, quantity, subtotal) VALUES (:pid, :uid, :q, :st)");
                     $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
-                    echo "1";
+                    echo "1 ";
                 } else {
                     //update
                     $stmt = getDB()->prepare("UPDATE Cart set quantity = quantity + :q, subtotal = quantity * :st where product_id = :pid AND user_id = :uid");
@@ -74,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     //DB should increment quantity by value and use the quantity * price to get subtotal
                     //TODO not sure if subtotal will be calced before or after the quantity update
                     $stmt->execute([":uid" => $user_id, ":pid" => $product_id, ":q" => 1, ":st" => $price]);
-                    echo "2";
+                    echo "2 ";
                 }
             }
         }
