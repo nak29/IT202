@@ -6,35 +6,6 @@ $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 
 $thingId = -1;
-$result = array();
-if(isset($_GET["thingId"])) {
-    $thingId = $_GET["thingId"];
-    $stmt = $db->prepare("SELECT * FROM Products where id = :id");
-    $stmt->execute([":id" => $thingId]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
-
-    <form method="POST" action="shop.php?thingId=<?php echo get($result, "id")?>">
-        <p class="pname"> <?php echo get($result, "product");?> </p>
-
-        <p class="pdesc"> <?php echo get($result, "description");?> </p>
-
-        <input type="submit" name="add" value="Add to cart"/>
-
-        <?php //making sure it's okay to add a remove button
-
-        $stmt = $db->prepare("SELECT * FROM Cart where product_id = :id and user_id = :uid");
-        $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
-        $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        //figuring out if the quantity in the user's cart is greater than 0
-        if(get($checkIfOverZero, "quantity") > 0){
-
-        ?>
-        <input type="submit" name="remove" value="Remove from cart"/>
-<?php   }?>
-    </form>
-<?php
-}
 
 //This is where add to carts are checked
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -95,6 +66,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+}
+
+$result = array();
+if(isset($_GET["thingId"])) {
+    $thingId = $_GET["thingId"];
+    $stmt = $db->prepare("SELECT * FROM Products where id = :id");
+    $stmt->execute([":id" => $thingId]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
+
+    <form method="POST" action="shop.php?thingId=<?php echo get($result, "id")?>">
+        <p class="pname"> <?php echo get($result, "product");?> </p>
+
+        <p class="pdesc"> <?php echo get($result, "description");?> </p>
+
+        <input type="submit" name="add" value="Add to cart"/>
+
+        <?php //making sure it's okay to add a remove button
+
+        $stmt = $db->prepare("SELECT * FROM Cart where product_id = :id and user_id = :uid");
+        $stmt->execute([":id" => $thingId, ":uid" => $_SESSION["user"]["id"]]);
+        $checkIfOverZero = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //figuring out if the quantity in the user's cart is greater than 0
+        if(get($checkIfOverZero, "quantity") > 0){
+
+        ?>
+        <input type="submit" name="remove" value="Remove from cart"/>
+<?php   }?>
+    </form>
+<?php
 }
 
 
