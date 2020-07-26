@@ -12,7 +12,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <ul class="cart">
-    <?php echo 0;?>
     <?php foreach($result as $row):?>
         <?php if(get($row, "quantity") > 0) {;?>
             <li>
