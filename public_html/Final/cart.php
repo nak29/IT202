@@ -51,7 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php }?>
     <?php endforeach;?>
 </ul>
-<br><br><br>
+<br><?php
+    $stmt = getDB()->prepare("SELECT sum(subtotal) as total from Cart where user_id = :uid and quantity >= 1");
+    $stmt->execute([":uid"=>$user_id]);
+    $theSubtotal = $stmt->fetch(PDO::FETCH_ASSOC);?>
+    <p>Your total is <b>$<?php echo $theSubtotal?></b></p>
+    <br><br>
 <form method="POST" action="cart.php">
     <input type="submit" name="empty" value="EMPTY the cart"/>
 </form>
