@@ -1,6 +1,9 @@
 <?php
 require(__DIR__ . "/header.php");
 
+$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+$db = new PDO($connection_string, $dbuser, $dbpass);
+
 $user_id = $_SESSION["user"]["id"];
 
 $stmt = $db->prepare("SELECT * FROM Cart where id = :id");
