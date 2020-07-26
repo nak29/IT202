@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt = getDB()->prepare("UPDATE Cart set quantity = 0 where user_id = :id");
                     $stmt->execute([":id" => $user_id]);
                 endforeach;
+
+                $stmt = $db->prepare("SELECT * FROM Cart where user_id = :id");
+                $stmt->execute([":id" => $user_id]);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
     }
@@ -48,4 +52,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="POST" action="cart.php">
     <input type="submit" name="empty" value="EMPTY the cart"/>
 </form>
-}
