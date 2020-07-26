@@ -4,9 +4,6 @@
 </head>
 <?php
 
-$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-$db = new PDO($connection_string, $dbuser, $dbpass);
-
 //HELPS A WHOLE LOT DONT GET RID OF
 error_reporting(-1);
 ini_set('display_errors', 1);
