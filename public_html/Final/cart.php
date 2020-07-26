@@ -4,6 +4,10 @@ require(__DIR__ . "/header.php");
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 
+//Checks if user is logged in, most of code is in a non-indented if-else
+if (isset($_SESSION["user"])) {
+
+
 $user_id = $_SESSION["user"]["id"];
 
 $stmt = $db->prepare("SELECT * FROM Cart where user_id = :id");
@@ -52,3 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="POST" action="cart.php">
     <input type="submit" name="empty" value="EMPTY the cart"/>
 </form>
+<?php }
+
+//if user is not logged in
+else{
+    ?><p class="error"><?php echo "Log in to view cart!"?></p><?php;
+}
