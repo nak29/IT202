@@ -12,6 +12,7 @@ $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 
 ?>
 <ul class="cart">
+    <?php echo 0;?>
     <?php foreach($result as $row):
         echo 1;?>
         <?php if(get($row, quantity) > 0) {
