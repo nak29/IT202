@@ -44,9 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
 
                 <?php echo get($newProduct, "product")?>
-                $<?php echo get($row, "subtotal");?>
                 Quantity: <?php echo get($row, "quantity");?>
-                <?php echo get($row, "id");?>
+                $<?php echo get($row, "subtotal");?>
                 <a href="shop.php?thingId=<?php echo get($row, "product_id");?>">View product page</a><br>
             </li>
         <?php }?>
