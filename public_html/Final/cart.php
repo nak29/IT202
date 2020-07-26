@@ -6,8 +6,6 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
 
 $user_id = $_SESSION["user"]["id"];
 
-echo $_SESSION["user"]["id"];
-
 $stmt = $db->prepare("SELECT * FROM Cart where id = :id");
 $stmt->execute([":id" => $user_id]);
 $result = $stmt->fetchall(PDO::FETCH_ASSOC);
@@ -17,7 +15,7 @@ $result = $stmt->fetchall(PDO::FETCH_ASSOC);
     <?php echo 0;?>
     <?php foreach($result as $row):
         echo 1;?>
-        <?php if(get($row, quantity) > 0) {
+        <?php if(get($row, "quantity") > 0) {
             echo 2;?>
             <li>
                 <?php
