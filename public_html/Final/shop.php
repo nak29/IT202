@@ -93,6 +93,7 @@ if(isset($_GET["thingId"])) {
 
         ?>
         <input type="submit" name="remove" value="Remove from cart"/>
+        <p>You have <?php echo get($checkIfOverZero, "quantity")?> of this item in your cart.</p>
 <?php   }?>
 
     </form>
