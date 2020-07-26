@@ -13,23 +13,21 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <ul class="cart">
     <?php echo 0;?>
-    <?php foreach($result as $row):
-        echo 1;?>
-        <?php if(get($row, "quantity") > 0) {
-            echo 2;?>
+    <?php foreach($result as $row):?>
+        <?php if(get($row, "quantity") > 0) {;?>
             <li>
                 <?php
-                echo 3;
+
                 $stmt = $db->prepare("SELECT * FROM Products where id = :id");
                 $stmt->execute([":id" => get($row, "product_id")]);
                 $newProduct = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
 
                 <?php echo get($newProduct, "product")?>
-                <?php echo get($row, "subtotal");?>
-                <?php echo get($row, "quantity");?>
+                $<?php echo get($row, "subtotal");?>
+                Quantity: <?php echo get($row, "quantity");?>
                 <?php echo get($row, "id");?>
-                <a href="shop.php?thingId=<?php echo get($row, "id");?>">View</a>
+                <a href="shop.php?thingId=<?php echo get($row, "id");?>">View product page</a><br>
             </li>
         <?php }?>
     <?php endforeach;?>

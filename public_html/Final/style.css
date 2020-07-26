@@ -71,3 +71,7 @@ p.error {
     margin-right: 30%;
     margin-left: 30%;
 }
+p.pname {
+    font-size: 20px;
+    font-family: "Roboto Black";
+}
