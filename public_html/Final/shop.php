@@ -119,7 +119,6 @@ catch (Exception $e) {
             <?php echo get($row, "product")?>
             <?php echo get($row, "price");?>
             <?php echo get($row, "quantity");?>
-            <?php echo get($row, "id");?>
             <a href="shop.php?thingId=<?php echo get($row, "id");?>">View</a>
         </li>
     <?php endforeach;?>

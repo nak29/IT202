@@ -56,7 +56,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([":uid"=>$user_id]);
     $cartTotal = $stmt->fetch(PDO::FETCH_ASSOC);?>
     <p>Your total is <b>$<?php echo $cartTotal["total"]?></b></p>
-    <br><br>
+    <br>
+<form method="POST" action="processOrder.php">
+    <input type="submit" name="process" value="Order items"/>
+</form>
+    <br>
 <form method="POST" action="cart.php">
     <input type="submit" name="empty" value="EMPTY the cart"/>
 </form>
