@@ -21,7 +21,7 @@ $result = $stmt->fetchall(PDO::FETCH_ASSOC);
                 <?php
                 echo 3;
                 $stmt = $db->prepare("SELECT * FROM Products where id = :id");
-                $stmt->execute([":id" => get($row, product_id)]);
+                $stmt->execute([":id" => get($row, "product_id")]);
                 $newProduct = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
 
