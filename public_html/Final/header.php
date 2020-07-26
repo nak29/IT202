@@ -22,6 +22,9 @@ session_start();
             <a href="shop.php">Shop</a>
         </li>
         <li>
+            <a href="cart.php">Cart</a>
+        </li>
+        <li>
             <a href="login.php">Login</a>
         </li>
         <li>
