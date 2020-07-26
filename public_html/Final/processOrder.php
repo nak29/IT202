@@ -25,7 +25,7 @@ if(isset($_POST["COrder"])) {
         $order_id++;
 
         $stmt = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
-        $stmt->execute([":id" => $user_id]);
+        $stmt->execute([":id" => $_SESSION["user"]["id"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach($result as $row):
