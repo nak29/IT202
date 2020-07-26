@@ -8,7 +8,7 @@ $user_id = $_SESSION["user"]["id"];
 
 $stmt = $db->prepare("SELECT * FROM Cart where user_id = :id");
 $stmt->execute([":id" => $user_id]);
-$result = $stmt->fetchall(PDO::FETCH_ASSOC);
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <ul class="cart">
