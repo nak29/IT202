@@ -24,8 +24,8 @@ if(isset($_POST["COrder"])) {
         $order_id = (int)$result["max"];
         $order_id++;
 
-        $stmt = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
-        $stmt->execute([":id" => $_SESSION["user"]["id"]]);
+        $stmt2 = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
+        $stmt2->execute([":id" => $_SESSION["user"]["id"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach($result as $row):
@@ -33,9 +33,9 @@ if(isset($_POST["COrder"])) {
             $quantity = get($row, "quantity");
             $subtotal = get($row, "subtotal");
 
-            $stmt = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal where
-order_id = :oid, product_id = :pid, user_id = :uid, quantity_purchased = :qp, address = :addr and subtotal = :stotal ");
-            $stmt->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$_SESSION["user"]["id"], "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
+            $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal where
+order_id = :oid, product_id = :pid, user_id = :uid, quantity_purchased = :qp, address = :addr and subtotal = :stotal");
+            $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$_SESSION["user"]["id"], "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
         endforeach;
 
     }
