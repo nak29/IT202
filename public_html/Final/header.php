@@ -31,6 +31,9 @@ session_start();
             <a href="cart.php">Cart</a>
         </li>
         <li>
+            <a href="orders.php">Old Orders</a>
+        </li>
+        <li>
             <a href="logout.php">Logout</a>
         </li>
         <?php } ?>
