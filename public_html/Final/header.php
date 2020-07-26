@@ -18,17 +18,21 @@ session_start();
         <li>
             <a href="shop.php">Shop</a>
         </li>
-        <li>
-            <a href="cart.php">Cart</a>
-        </li>
+        <?php if (!isset($_SESSION["user"])) {?>
         <li>
             <a href="login.php">Login</a>
         </li>
         <li>
             <a href="register.php">Register</a>
         </li>
+        <?php } ?>
+        <?php if (isset($_SESSION["user"])) {?>
+        <li>
+            <a href="cart.php">Cart</a>
+        </li>
         <li>
             <a href="logout.php">Logout</a>
         </li>
+        <?php } ?>
     </ul>
 </nav>
