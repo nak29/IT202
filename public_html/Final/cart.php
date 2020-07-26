@@ -6,6 +6,8 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
 
 $user_id = $_SESSION["user"]["id"];
 
+echo $_SESSION["user"]["id"];
+
 $stmt = $db->prepare("SELECT * FROM Cart where id = :id");
 $stmt->execute([":id" => $user_id]);
 $result = $stmt->fetchall(PDO::FETCH_ASSOC);
