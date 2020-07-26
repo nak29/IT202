@@ -10,6 +10,19 @@ $stmt = $db->prepare("SELECT * FROM Cart where user_id = :id");
 $stmt->execute([":id" => $user_id]);
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST["empty"])) {
+        if (isset($_SESSION["user"])) {
+            if ($_POST["empty"]) {
+                foreach ($result as $rowEmpty):
+                    $stmt = getDB()->prepare("UPDATE Cart set quantity = 0 where user_id = :id");
+                    $stmt->execute([":id" => $user_id]);
+                endforeach;
+            }
+        }
+    }
+}
+
 ?>
 <ul class="cart">
     <?php foreach($result as $row):?>
@@ -31,3 +44,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php }?>
     <?php endforeach;?>
 </ul>
+<br><br><br>
+<form method="POST" action="cart.php">
+    <input type="submit" name="empty" value="EMPTY the cart"/>
+</form>
+}
