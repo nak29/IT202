@@ -16,7 +16,6 @@ if(isset($_POST["COrder"])) {
 
         $address = $_POST["address"];
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-        $db = new PDO($connection_string, $dbuser, $dbpass);
 
         $stmt = getDB()->prepare("SELECT Max(order_id) as max from Orders");
         $stmt->execute();
