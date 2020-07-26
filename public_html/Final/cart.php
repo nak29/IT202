@@ -12,10 +12,13 @@ $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 
 ?>
 <ul class="cart">
-    <?php foreach($result as $row):?>
-        <?php if(get($row, quantity) > 0) {?>
+    <?php foreach($result as $row):
+        echo 1;?>
+        <?php if(get($row, quantity) > 0) {
+            echo 2;?>
             <li>
                 <?php
+                echo 3;
                 $stmt = $db->prepare("SELECT * FROM Products where id = :id");
                 $stmt->execute([":id" => get($row, product_id)]);
                 $newProduct = $stmt->fetch(PDO::FETCH_ASSOC);
