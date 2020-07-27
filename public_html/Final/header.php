@@ -5,8 +5,8 @@
 <?php
 
 //HELPS A WHOLE LOT DONT GET RID OF
-error_reporting(-1);
-ini_set('display_errors', 1);
+//error_reporting(-1);
+//ini_set('display_errors', 1);
 require(__DIR__ . "/common.inc.php");
 session_start();
 ?>
