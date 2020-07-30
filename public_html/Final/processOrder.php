@@ -32,7 +32,7 @@ if(isset($_POST["COrder"])) {
             $quantity = get($row, "quantity");
             $subtotal = get($row, "subtotal");
 
-            $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal where
+            $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal VALUES
 order_id = :oid, product_id = :pid, user_id = :uid, quantity_purchased = :qp, address = :addr and subtotal = :stotal");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$_SESSION["user"]["id"], "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
         endforeach;
