@@ -24,7 +24,7 @@ if(isset($_POST["COrder"])) {
         $order_id++;
 
         print_r($result);
-        echo $result;
+        echo $order_id;
 
 
         $stmt2 = getDB()->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
