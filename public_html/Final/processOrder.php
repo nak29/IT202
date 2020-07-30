@@ -16,6 +16,7 @@ if(isset($_POST["COrder"])) {
         $user_id = $_SESSION["user"]["id"];
         $address = $_POST["address"];
         echo $address;
+        echo $user_id;
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 
         $stmt = getDB()->prepare("SELECT Max(order_id) as max from Orders");
