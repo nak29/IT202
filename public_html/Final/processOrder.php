@@ -20,13 +20,13 @@ if(isset($_POST["COrder"])) {
         $stmt = getDB()->prepare("SELECT Max(order_id) as max from Orders");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $order_id = (int)$result["order_id"];
+        $order_id = (int)$result["max"];
         $order_id++;
 
         print_r($result);
 
 
-        $stmt2 = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
+        $stmt2 = $db->prepare("SELECT * FROM Cart");
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
