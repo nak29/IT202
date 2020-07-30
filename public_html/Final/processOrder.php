@@ -17,13 +17,11 @@ if(isset($_POST["COrder"])) {
         $address = $_POST["address"];
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 
-        $stmt = getDB()->prepare("SELECT Max(order_id) as max from Orders");
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $order_id = (int)$result["max"];
-        $order_id++;
 
-        print_r($result);
+        $order_id = 2;
+
+
+
 
 
         $stmt2 = getDB()->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
