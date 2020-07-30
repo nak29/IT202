@@ -21,7 +21,7 @@ if(isset($_POST["COrder"])) {
         $stmt = getDB()->prepare("SELECT Max(id) as max from Orders");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $order_id = (int)$result["order_id"];
+        $order_id = (int)$result["id"];
         $order_id++;
 
         echo $order_id;
@@ -30,15 +30,19 @@ if(isset($_POST["COrder"])) {
         $stmt2->execute([":id" => $_SESSION["user"]["id"]]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        echo 0;
         foreach($result as $row):
+            echo 1;
             $product = get($row, "product_id");
             $quantity = get($row, "quantity");
             $subtotal = get($row, "subtotal");
 
+            echo 2;
+
             $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal) VALUES
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$_SESSION["user"]["id"], "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
-            echo $stmt3;
+            echo 3;
             echo $order_id . $product . $_SESSION["user"]["id"] . $quantity . $address . $subtotal;
         endforeach;
 
