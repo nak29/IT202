@@ -23,14 +23,14 @@ if(isset($_POST["COrder"])) {
         $order_id = (int)$result["order_id"];
         $order_id++;
 
-        echo $result;
+        print_r($result);
 
 
         $stmt2 = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        echo $result2;
+        print_r($result2);
 
         echo 0;
         foreach($result2 as $row):
