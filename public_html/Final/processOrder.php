@@ -18,7 +18,7 @@ if(isset($_POST["COrder"])) {
         echo $address;
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 
-        $stmt = getDB()->prepare("SELECT Max(order_id) as max from Orders");
+        $stmt = getDB()->prepare("SELECT Max(id) as max from Orders");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $order_id = (int)$result["order_id"];
@@ -39,6 +39,7 @@ if(isset($_POST["COrder"])) {
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$_SESSION["user"]["id"], "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
             echo $stmt3;
+            echo $order_id . $product . $_SESSION["user"]["id"] . $quantity . $address . $subtotal;
         endforeach;
 
     }
