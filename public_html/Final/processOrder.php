@@ -13,21 +13,21 @@ require(__DIR__ . "/header.php");
 if(isset($_POST["COrder"])) {
     if (isset($_POST["address"])) {
 
-
+        $user_id = $_SESSION["user"]["id"];
         $address = $_POST["address"];
         echo $address;
         $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 
-        $stmt = getDB()->prepare("SELECT Max(id) as max from Orders");
+        $stmt = getDB()->prepare("SELECT Max(order_id) as max from Orders");
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $order_id = (int)$result["id"];
+        $order_id = (int)$result["order_id"];
         $order_id++;
 
         echo $order_id;
 
         $stmt2 = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
-        $stmt2->execute([":id" => $_SESSION["user"]["id"]]);
+        $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo 0;
@@ -41,9 +41,9 @@ if(isset($_POST["COrder"])) {
 
             $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal) VALUES
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
-            $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$_SESSION["user"]["id"], "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
+            $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$user_id, "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
             echo 3;
-            echo $order_id . $product . $_SESSION["user"]["id"] . $quantity . $address . $subtotal;
+            echo $order_id . $product . $user_id . $quantity . $address . $subtotal;
         endforeach;
 
     }
