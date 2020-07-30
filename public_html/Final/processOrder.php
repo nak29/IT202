@@ -26,7 +26,7 @@ if(isset($_POST["COrder"])) {
         print_r($result);
 
 
-        $stmt2 = $db->prepare("SELECT * FROM Cart");
+        $stmt2 = getDB()->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
