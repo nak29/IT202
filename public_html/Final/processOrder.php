@@ -28,10 +28,10 @@ if(isset($_POST["COrder"])) {
 
         $stmt2 = $db->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
         $stmt2->execute([":id" => $_SESSION["user"]["id"]]);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo 0;
-        foreach($result as $row):
+        foreach($result2 as $row):
             echo 1;
             $product = get($row, "product_id");
             $quantity = get($row, "quantity");
