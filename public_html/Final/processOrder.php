@@ -30,6 +30,7 @@ if(isset($_POST["COrder"])) {
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        ?><br><br><?php
         print_r($result2);
 
         echo 0;
