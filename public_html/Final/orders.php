@@ -21,7 +21,7 @@ $old_created = -1;
         }
         ?><br><?php
         $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product;");
-        $stmt2->execute([":product" => get($row, "product_id")]);
+        $stmt2->execute([":product" => 4]);
         $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         echo get($result2, "product");?>
