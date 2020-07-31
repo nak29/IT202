@@ -1,12 +1,18 @@
 <?php
+require(__DIR__ . "/header.php");
+?>
+<h4>Login</h4>
+<form method="POST">
+    <label for="email">Email
+        <input type="email" id="email" name="email" autocomplete="off" />
+    </label>
+    <label for="p">Password
+        <input type="password" id="p" name="password" autocomplete="off"/>
+    </label>
+    <input type="submit" name="login" value="Login"/>
+</form>
 
-$cleardb_url      = parse_url(getenv("JAWSDB_URL"));
-$dbhost   = $cleardb_url["host"];
-$dbuser = $cleardb_url["user"];
-$dbpass = $cleardb_url["pass"];
-$dbdatabase       = substr($cleardb_url["path"],1);
-
-$check = 0;
+<?php
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
@@ -36,41 +42,19 @@ if(isset($_POST["login"])){
                             "email"=>$result["email"],
                             "first_name"=>$result["first_name"],
                             "last_name"=>$result["last_name"]);
-                        require(__DIR__ . "/header.php");
                         echo "<div>Passwords matched! Welcome " . $_SESSION["user"]["first_name"] . "</div>";
-                        $check = -1;
                     }
                     else{
-                        require(__DIR__ . "/header.php");
                         echo "<div>Invalid password!</div>";
-                        $check = -1;
                     }
                 }
                 else{
-                    require(__DIR__ . "/header.php");
                     echo "<div>Invalid user</div>";
-                    $check = -1;
                 }
             }
         }
         catch (Exception $e){
-            require(__DIR__ . "/header.php");
             echo $e->getMessage();
-            $check = -1;
         }
     }
 }
-if($check != -1){include(__DIR__ . "/header.php");}
-?>
-    <h4>Login</h4>
-    <form method="POST">
-        <label for="email">Email
-            <input type="email" id="email" name="email" autocomplete="off" />
-        </label>
-        <label for="p">Password
-            <input type="password" id="p" name="password" autocomplete="off"/>
-        </label>
-        <input type="submit" name="login" value="Login"/>
-    </form>
-
-<?php
