@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . "/common.inc.php");
+require(__DIR__ . "/config.php");
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
