@@ -21,7 +21,7 @@ $old_created = -1;
         }
         ?><br><?php
         $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :pid");
-        $stmt2->execute([":pid" => get($results, "product_id")]);
+        $stmt2->execute([":pid" => get($row, "product_id")]);
         $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 
         echo get($result2, "product");
