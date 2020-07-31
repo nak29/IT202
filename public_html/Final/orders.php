@@ -14,12 +14,12 @@ $old_created = -1;
 <ul class="shop">
 
     <?php foreach($results as $row):?>
-        <br>
         <?php
         if (get($row, "created") != $old_created) {
-            ?></li><br><li><?php
+            ?></li><li><?php
             echo get($row, "address");
         }
+        ?><br><?php
         $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product_id;");
         $stmt2->execute([":product" => get($row, "product_id")]);
         $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
