@@ -28,7 +28,8 @@ $old_created = -1;
         $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
 
         echo get($result2, "product");?> x<?php
-        echo get($row, "quantity_purchased");
+        echo get($row, "quantity_purchased");?> | $<?php
+        echo get($row, "subtotal");
         $old_created = get($row, "created");?>
         </li>
     <?php endforeach;?>
