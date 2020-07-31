@@ -23,32 +23,39 @@ if(isset($_POST["COrder"])) {
         $order_id = (int)$result["max"];
         $order_id++;
 
-        print_r($result);
-        echo $order_id;
-
 
         $stmt2 = getDB()->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-        ?><br><br><?php
-        print_r($result2);
+        if (isempty($result2)) {
+            ?><p class="error"><?php echo "Your cart is empty! Go buy some things!"?></p><?php;
+        }
 
-        echo 0;
+        //Runs as long as the user's cart is not empty
+        else {
+
+
         foreach($result2 as $row):
-            echo 1;
             $product = get($row, "product_id");
             $quantity = get($row, "quantity");
             $subtotal = get($row, "subtotal");
 
-            echo 2;
 
             $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal) VALUES
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$user_id, "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
-            echo 3;
             echo $order_id . $product . $user_id . $quantity . $address . $subtotal;
         endforeach;
+
+        $stmt4 = getDB()->prepare("DELETE FROM Cart where user_id = :uid");
+        $stmt4->execute([":uid"=>$user_id]);
+
+        ?> <p>You order has been placed!</p>
+        <br>
+        <a href="orders.php">View all past orders here</a>
+        <?php
+        }
 
     }
 }
