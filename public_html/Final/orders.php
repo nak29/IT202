@@ -20,7 +20,7 @@ $old_created = -1;
             ?>Order to be shipped to address: <?php echo get($row, "address");
         }
         ?><br><?php
-        $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product_id;");
+        $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product;");
         $stmt2->execute([":product" => get($row, "product_id")]);
         $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
 
