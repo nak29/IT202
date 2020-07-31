@@ -60,7 +60,7 @@ if(isset($_POST["login"])){
         }
     }
 }
-if($check = -1){include(__DIR__ . "/header.php");}
+if($check != -1){include(__DIR__ . "/header.php");}
 ?>
     <h4>Login</h4>
     <form method="POST">
