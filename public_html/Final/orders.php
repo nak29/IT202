@@ -1,6 +1,8 @@
 <?php
 require(__DIR__ . "/header.php");
 
+if (isset($_SESSION["user"])) {
+
 $user_id = $_SESSION["user"]["id"];
 
 $stmt = getDB()->prepare("SELECT * FROM Orders where user_id = :id ORDER BY created;");
@@ -35,6 +37,9 @@ $old_created = -1;
     <?php endforeach;?>
 </ul>
 
-
+<?php}
+else{
+    ?><p class="error"><?php echo "Log in to view past orders!"?></p><?php;
+}
 
 
