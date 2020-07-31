@@ -21,11 +21,11 @@ $old_created = -1;
         }
         ?><br><?php
         $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product;");
-        $stmt2->execute([":product" => get($row, "product_id")]);
+        $stmt2->execute([":product" => 4]);
         $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-        echo get($result2, "product");?>
-        <?php echo get($row, "quantity_purchased");
+        echo get($result2, "product");
+        echo get($row, "quantity_purchased");
         $old_created = get($row, "created");?>
     <?php endforeach;?>
 </ul>
