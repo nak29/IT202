@@ -6,6 +6,7 @@ $dbuser = $cleardb_url["user"];
 $dbpass = $cleardb_url["pass"];
 $dbdatabase       = substr($cleardb_url["path"],1);
 
+$check = 0;
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
@@ -37,25 +38,29 @@ if(isset($_POST["login"])){
                             "last_name"=>$result["last_name"]);
                         require(__DIR__ . "/header.php");
                         echo "<div>Passwords matched! Welcome " . $_SESSION["user"]["first_name"] . "</div>";
+                        $check = -1;
                     }
                     else{
                         require(__DIR__ . "/header.php");
                         echo "<div>Invalid password!</div>";
+                        $check = -1;
                     }
                 }
                 else{
                     require(__DIR__ . "/header.php");
                     echo "<div>Invalid user</div>";
+                    $check = -1;
                 }
             }
         }
         catch (Exception $e){
             require(__DIR__ . "/header.php");
             echo $e->getMessage();
+            $check = -1;
         }
     }
 }
-include(__DIR__ . "/header.php");
+if($check = -1){include(__DIR__ . "/header.php");}
 ?>
     <h4>Login</h4>
     <form method="POST">
