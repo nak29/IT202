@@ -23,32 +23,27 @@ if(isset($_POST["COrder"])) {
         $order_id = (int)$result["max"];
         $order_id++;
 
-        echo 1;
         $stmt2 = getDB()->prepare("SELECT * FROM Cart where user_id = :id and quantity > 0");
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         if (empty($result2)) {
             ?><p class="error"><?php echo "Your cart is empty! Go buy some things!"?></p><?php;
-            echo 2;
+
         }
 
         //Runs as long as the user's cart is not empty
         else {
-        echo 3;
 
         foreach($result2 as $row):
             $product = get($row, "product_id");
             $quantity = get($row, "quantity");
             $subtotal = get($row, "subtotal");
-            echo 7;
 
             $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal) VALUES
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$user_id, "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
-            echo $order_id . $product . $user_id . $quantity . $address . $subtotal;
         endforeach;
-        echo 4;
         $stmt4 = getDB()->prepare("DELETE FROM Cart where user_id = :uid");
         $stmt4->execute([":uid"=>$user_id]);
 
@@ -56,7 +51,6 @@ if(isset($_POST["COrder"])) {
         <br>
         <a href="orders.php">View all past orders here</a>
         <?php
-            echo 5;
         }
 
     }
