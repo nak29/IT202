@@ -24,7 +24,7 @@ $old_created = -1;
         $stmt2->execute([":product" => get($row, "product_id")]);
         $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        echo get($result2, "product")?>
+        echo get($result2, "product");?>
         <?php echo get($row, "quantity_purchased");
         $old_created = get($row, "created");?>
     <?php endforeach;?>
