@@ -1,18 +1,6 @@
 <?php
 require(__DIR__ . "/header.php");
-?>
-<h4>Login</h4>
-<form method="POST">
-    <label for="email">Email
-        <input type="email" id="email" name="email" autocomplete="off" />
-    </label>
-    <label for="p">Password
-        <input type="password" id="p" name="password" autocomplete="off"/>
-    </label>
-    <input type="submit" name="login" value="Login"/>
-</form>
 
-<?php
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
@@ -58,3 +46,16 @@ if(isset($_POST["login"])){
         }
     }
 }
+?>
+    <h4>Login</h4>
+    <form method="POST">
+        <label for="email">Email
+            <input type="email" id="email" name="email" autocomplete="off" />
+        </label>
+        <label for="p">Password
+            <input type="password" id="p" name="password" autocomplete="off"/>
+        </label>
+        <input type="submit" name="login" value="Login"/>
+    </form>
+
+<?php
