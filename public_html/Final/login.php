@@ -49,6 +49,7 @@ if(isset($_POST["login"])){
         }
     }
 }
+include(__DIR__ . "/header.php");
 ?>
     <h4>Login</h4>
     <form method="POST">
