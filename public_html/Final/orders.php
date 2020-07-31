@@ -14,26 +14,22 @@ $old_created = -1;
 <ul class="shop">
 
     <?php foreach($results as $row):?>
-        <li>
-            <?php
-            if (get($row, "created") != $old_created) {
-                ?><br><?php
-                echo get($row, "address");
-            }
+        <br>
+        <?php
+        if (get($row, "created") != $old_created) {
+            ?></li><br><li><?php
+            echo get($row, "address");
+        }
+        $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product_id;");
+        $stmt2->execute([":product" => get($row, "product_id")]);
+        $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product_id;");
-            $stmt2->execute([":product" => get($row, "product_id")]);
-            $result2 = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            echo get($result2, "product")?>
-            <?php echo get($row, "quantity_purchased");
-            $old_created = get($row, "created");?>
-        </li>
+        echo get($result2, "product")?>
+        <?php echo get($row, "quantity_purchased");
+        $old_created = get($row, "created");?>
     <?php endforeach;?>
 </ul>
 
 
-
-<?php echo get($row, "address");?>
 
 
