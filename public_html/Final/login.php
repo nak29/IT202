@@ -1,5 +1,11 @@
 <?php
-require(__DIR__ . "/config.php");
+
+$cleardb_url      = parse_url(getenv("JAWSDB_URL"));
+$dbhost   = $cleardb_url["host"];
+$dbuser = $cleardb_url["user"];
+$dbpass = $cleardb_url["pass"];
+$dbdatabase       = substr($cleardb_url["path"],1);
+
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
