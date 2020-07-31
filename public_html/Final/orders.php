@@ -17,7 +17,7 @@ $old_created = -1;
         <?php
         if (get($row, "created") != $old_created) {
             ?></li><li><?php
-            echo get($row, "address");
+            ?>Order to be shipped to address: <?php echo get($row, "address");
         }
         ?><br><?php
         $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :product_id;");
