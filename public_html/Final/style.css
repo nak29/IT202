@@ -77,3 +77,11 @@ ul.cart {
     font-size: 20px;
     font-family: "Roboto Black";
 }
+ul.orders {
+    font-size: 26px;
+    font-family: "Roboto Black", serif;
+}
+ul.orders2 {
+    font-size: 22px;
+    font-family: "Roboto Black", serif;
+}

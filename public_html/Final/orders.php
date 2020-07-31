@@ -11,12 +11,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $old_created = -1;
 ?>
 
-<ul class="shop">
+<ul class="orders">
 
     <?php foreach($results as $row):?>
         <?php
         if (get($row, "created") != $old_created) {
-            ?></li><br><li><?php
+            ?></li> <br> <ul class="orders2"> <li><?php
             ?>Order to be shipped to address:<b> <?php echo get($row, "address");
         }
         ?><li><?php
