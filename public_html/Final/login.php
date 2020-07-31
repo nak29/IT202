@@ -1,5 +1,4 @@
 <?php
-require(__DIR__ . "/header.php");
 
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
@@ -30,18 +29,22 @@ if(isset($_POST["login"])){
                             "email"=>$result["email"],
                             "first_name"=>$result["first_name"],
                             "last_name"=>$result["last_name"]);
+                        require(__DIR__ . "/header.php");
                         echo "<div>Passwords matched! Welcome " . $_SESSION["user"]["first_name"] . "</div>";
                     }
                     else{
+                        require(__DIR__ . "/header.php");
                         echo "<div>Invalid password!</div>";
                     }
                 }
                 else{
+                    require(__DIR__ . "/header.php");
                     echo "<div>Invalid user</div>";
                 }
             }
         }
         catch (Exception $e){
+            require(__DIR__ . "/header.php");
             echo $e->getMessage();
         }
     }
