@@ -29,7 +29,6 @@ if(isset($_POST["COrder"])) {
 
         if (empty($result2)) {
             ?><p class="error"><?php echo "Your cart is empty! Go buy some things!"?></p><?php;
-
         }
 
         //Runs as long as the user's cart is not empty
@@ -43,6 +42,10 @@ if(isset($_POST["COrder"])) {
             $stmt3 = getDB()->prepare("INSERT INTO Orders (order_id, product_id, user_id, quantity_purchased, address, subtotal) VALUES
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$user_id, "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
+
+            $stmt5 = getDB()->prepare("UPDATE Products set quantity = quantity - :q where product_id = :pid");
+            $stmt5->execute([":q" => $quantity, ":pid" => $product]);
+            $result5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
         endforeach;
         $stmt4 = getDB()->prepare("DELETE FROM Cart where user_id = :uid");
         $stmt4->execute([":uid"=>$user_id]);
