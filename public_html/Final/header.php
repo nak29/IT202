@@ -26,7 +26,6 @@ session_start();
             <a href="register.php">Register</a>
         </li>
         <?php } ?>
-        <?php if (isset($_SESSION["user"])) {?>
         <li>
             <a href="cart.php">Cart</a>
         </li>
@@ -36,6 +35,5 @@ session_start();
         <li>
             <a href="logout.php">Logout</a>
         </li>
-        <?php } ?>
     </ul>
 </nav>
