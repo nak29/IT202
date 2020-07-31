@@ -54,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <br><?php
     $stmt = getDB()->prepare("SELECT sum(subtotal) as total from Cart where user_id = :uid and quantity >= 1");
     $stmt->execute([":uid"=>$user_id]);
-    $cartTotal = $stmt->fetch(PDO::FETCH_ASSOC);?>
+    $cartTotal = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!empty($result2)) {?>
     <p class="welcome">Your total is <b>$<?php echo $cartTotal["total"]?></b></p>
     <br>
 <form method="POST" action="processOrder.php">
@@ -65,6 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" name="empty" value="EMPTY the cart"/>
 </form>
 <?php }
+    else{
+        ?><p class="error"><?php echo "Your cart is empty!"?></p><?php;
+    }
+
+}
 
 //if user is not logged in
 else{
