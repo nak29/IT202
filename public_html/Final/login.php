@@ -42,14 +42,14 @@ if(isset($_POST["login"])){
                             "email"=>$result["email"],
                             "first_name"=>$result["first_name"],
                             "last_name"=>$result["last_name"]);
-                        echo "<div>Passwords matched! Welcome " . $_SESSION["user"]["first_name"] . "</div>";
+                        ?><p class="welcome"><?php echo "Welcome " . $_SESSION["user"]["first_name"] . "!"?></p><?php
                     }
                     else{
-                        echo "<div>Invalid password!</div>";
+                        ?><p class="error"><?php echo "Invalid password."?></p><?php
                     }
                 }
                 else{
-                    echo "<div>Invalid user</div>";
+                    ?><p class="error"><?php echo "Invalid user."?></p><?php
                 }
             }
         }
