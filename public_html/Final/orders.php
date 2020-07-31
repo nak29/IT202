@@ -17,9 +17,9 @@ $old_created = -1;
         <?php
         if (get($row, "created") != $old_created) {
             ?></li><br><li><?php
-            ?>Order to be shipped to address: <?php echo get($row, "address");
+            ?></b>Order to be shipped to address:<b> <?php echo get($row, "address");
         }
-        ?><br><?php
+        ?><li><?php
         $stmt2 = getDB()->prepare("SELECT * FROM Products where id = :pid");
         $stmt2->execute([":pid" => get($row, "product_id")]);
         $result2 = $stmt2->fetch(PDO::FETCH_ASSOC);
@@ -27,6 +27,7 @@ $old_created = -1;
         echo get($result2, "product");?> x<?php
         echo get($row, "quantity_purchased");
         $old_created = get($row, "created");?>
+        </li>
     <?php endforeach;?>
 </ul>
 
