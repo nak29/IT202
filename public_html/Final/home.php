@@ -6,5 +6,5 @@ include(__DIR__ . "/header.php");
 <?php if (isset($_SESSION["user"])):?>
     <p class="welcome"><?php echo "Welcome " . $_SESSION["user"]["first_name"] . " " . $_SESSION["user"]["last_name"] ."!";?></p>
 <?php else:?>
-    <p class="welcome"><?php echo "Welcome new user!";?></p>
+    <p class="welcome"><?php echo "Welcome new user! Be sure to log in or register to start shopping!";?></p>
 <?php endif;?>
