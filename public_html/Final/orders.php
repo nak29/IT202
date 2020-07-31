@@ -16,7 +16,10 @@ $old_created = -1;
     <?php foreach($results as $row):?>
         <?php
         if (get($row, "created") != $old_created) {
-            ?></li> <br> <ul class="orders2"> <li><?php
+            if ($old_created != -1){
+                ?></ul><?php
+            }
+            ?> <br> <ul class="orders2"> <li><?php
             ?>Order to be shipped to address:<b> <?php echo get($row, "address");
         }
         ?><li><?php
