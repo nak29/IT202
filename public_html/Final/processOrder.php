@@ -28,7 +28,7 @@ if(isset($_POST["COrder"])) {
         $stmt2->execute([":id" => $user_id]);
         $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-        if (isempty($result2)) {
+        if (empty($result2)) {
             ?><p class="error"><?php echo "Your cart is empty! Go buy some things!"?></p><?php;
             echo 2;
         }
