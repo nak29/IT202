@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = getDB()->prepare("SELECT sum(subtotal) as total from Cart where user_id = :uid and quantity >= 1");
     $stmt->execute([":uid"=>$user_id]);
     $cartTotal = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($cartTotal >= 0) {?>
+    if ($cartTotal > 0) {?>
     <p class="welcome">Your total is <b>$<?php echo $cartTotal["total"]?></b></p>
     <br>
 <form method="POST" action="processOrder.php">
