@@ -1,6 +1,6 @@
 <?php require(__DIR__ . "/header.php");?>
 <h4>Register</h4>
-    <?php if (!isset($_SESSION["user"])) {?>
+
 <form method="POST">
     <label for="email">Email
         <input type="email" id="email" name="email" autocomplete="off" />
