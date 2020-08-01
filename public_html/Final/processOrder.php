@@ -45,7 +45,8 @@ if(isset($_POST["COrder"])) {
 
             $stmt5 = getDB()->prepare("UPDATE Products set quantity = quantity - :q where product_id = :pid");
             $stmt5->execute([":q" => $quantity, ":pid" => $product]);
-            $result5 = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+            error_log(var_export($stmt5->errorInfo(), true));
+
         endforeach;
         $stmt4 = getDB()->prepare("DELETE FROM Cart where user_id = :uid");
         $stmt4->execute([":uid"=>$user_id]);
