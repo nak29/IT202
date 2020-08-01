@@ -7,7 +7,7 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
 
 
 <h4>Login</h4>
-<?php if (isset($_SESSION["user"])) {?>
+<?php if (!isset($_SESSION["user"])) {?>
 <form method="POST">
     <label for="email">Email
         <input type="email" id="email" name="email" autocomplete="off" />
