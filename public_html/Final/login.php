@@ -2,6 +2,7 @@
 require(__DIR__ . "/header.php");
 ?>
 <h4>Login</h4>
+<?php if (isset($_SESSION["user"])) {?>
 <form method="POST">
     <label for="email">Email
         <input type="email" id="email" name="email" autocomplete="off" />
@@ -11,6 +12,10 @@ require(__DIR__ . "/header.php");
     </label>
     <input type="submit" name="login" value="Login"/>
 </form>
+<?php}
+else{
+    ?><p class="error"><?php echo "You area already logged in!"?></p><?php;
+}?>
 
 <?php
 //echo var_export($_GET, true);

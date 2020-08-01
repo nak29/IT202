@@ -1,5 +1,6 @@
 <?php require(__DIR__ . "/header.php");?>
 <h4>Register</h4>
+    <?php if (isset($_SESSION["user"])) {?>
 <form method="POST">
     <label for="email">Email
         <input type="email" id="email" name="email" autocomplete="off" />
@@ -19,7 +20,12 @@
     <input type="submit" name="register" value="Register"/>
 </form>
 
-<?php
+<?php}
+else{
+    ?><p class="error"><?php echo "You area already logged in!"?></p><?php;
+}
+
+
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);
