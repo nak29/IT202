@@ -1,6 +1,11 @@
 <?php
 require(__DIR__ . "/header.php");
+
+$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
+$db = new PDO($connection_string, $dbuser, $dbpass);
 ?>
+
+
 <h4>Login</h4>
 <?php if (isset($_SESSION["user"])) {?>
 <form method="POST">
