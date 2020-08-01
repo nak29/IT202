@@ -20,12 +20,9 @@
     <input type="submit" name="register" value="Register"/>
 </form>
 
-<?php}
-else{
-    ?><p class="error"><?php echo "You area already logged in!"?></p><?php;
-}
 
 
+<?php
 //echo var_export($_GET, true);
 //echo var_export($_POST, true);
 //echo var_export($_REQUEST, true);

@@ -1,13 +1,9 @@
 <?php
 require(__DIR__ . "/header.php");
-
-$connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
-$db = new PDO($connection_string, $dbuser, $dbpass);
 ?>
 
 
 <h4>Login</h4>
-<?php if (!isset($_SESSION["user"])) {?>
 <form method="POST">
     <label for="email">Email
         <input type="email" id="email" name="email" autocomplete="off" />
@@ -17,10 +13,6 @@ $db = new PDO($connection_string, $dbuser, $dbpass);
     </label>
     <input type="submit" name="login" value="Login"/>
 </form>
-<?php}
-else{
-    ?><p class="error"><?php echo "You area already logged in!"?></p><?php;
-}?>
 
 <?php
 //echo var_export($_GET, true);
