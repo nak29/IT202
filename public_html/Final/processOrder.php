@@ -11,6 +11,7 @@ require(__DIR__ . "/header.php");
 
 <?php
 if(isset($_POST["COrder"])) {
+    $noGood = 1;
     if (isset($_POST["address"])) {
 
         $user_id = $_SESSION["user"]["id"];
@@ -34,6 +35,20 @@ if(isset($_POST["COrder"])) {
         //Runs as long as the user's cart is not empty
         else {
 
+        foreach($result2 as $row) {
+            $stmt6 = getDB()->prepare("SELECT FROM Products where id = :pid");
+            $stmt6->execute([":pid" => get($row, "product_id")]);
+            $result6 = $stmt6->fetch(PDO::FETCH_ASSOC);
+
+            if(get($result6, "quantity") - get($row, "quantity") < 0){
+                $noGood = -1;
+            }
+        }
+
+        if($noGood == -1){
+            echo 5;
+        }
+        else{
         foreach($result2 as $row):
             $product = get($row, "product_id");
             $quantity = get($row, "quantity");
@@ -55,6 +70,6 @@ if(isset($_POST["COrder"])) {
         <a href="orders.php">View all past orders here</a>
         <?php
         }
-
+        }
     }
 }
