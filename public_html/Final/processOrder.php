@@ -46,7 +46,7 @@ if(isset($_POST["COrder"])) {
         }
 
         if($noGood == -1){
-            echo 5;
+            ?><p class="error"><?php echo "One or more items is out of stock. Cannot complete purchase."?></p><?php;
         }
         else{
         foreach($result2 as $row):
