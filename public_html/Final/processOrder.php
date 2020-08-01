@@ -43,9 +43,8 @@ if(isset($_POST["COrder"])) {
 (:oid, :pid, :uid, :qp, :addr, :stotal)");
             $stmt3->execute([":oid"=>$order_id, ":pid"=>$product, ":uid"=>$user_id, "qp"=>$quantity, ":addr"=>$address, ":stotal"=>$subtotal]);
 
-            $stmt5 = getDB()->prepare("UPDATE Products set quantity = quantity - :q where product_id = :pid");
+            $stmt5 = getDB()->prepare("UPDATE Products set quantity = quantity - :q where id = :pid");
             $stmt5->execute([":q" => $quantity, ":pid" => $product]);
-            error_log(var_export($stmt5->errorInfo(), true));
 
         endforeach;
         $stmt4 = getDB()->prepare("DELETE FROM Cart where user_id = :uid");
