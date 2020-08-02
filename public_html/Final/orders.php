@@ -8,6 +8,7 @@ $stmt->execute([":id" => $user_id]);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // giving value
+if (isset($_SESSION["user"])) {
 $old_created = -1;
 ?>
 
@@ -34,7 +35,11 @@ $old_created = -1;
         </li>
     <?php endforeach;?>
 </ul>
-
+<?php
+}
+else{
+    ?><p class="error"><?php echo "Log in to view past orders!"?></p><?php;
+}
 
 
 
