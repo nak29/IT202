@@ -121,7 +121,7 @@ catch (Exception $e) {
         <li>
             <?php echo get($row, "product")?>
             $<?php echo get($row, "price");?>
-            (<?php echo get($row, "quantity");?>left in stock)
+            (<?php echo get($row, "quantity");?> left in stock)
             <a href="shop.php?thingId=<?php echo get($row, "id");?>">View</a>
         </li>
     <?php endforeach;?>
