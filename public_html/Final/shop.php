@@ -13,6 +13,8 @@ if(isset($_GET["thingId"])) {
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
 
+    <h4>Shop</h4>
+
     <form method="POST" action="shop.php?thingId=<?php echo get($result, "id")?>">
         <p class="pname"> <?php echo get($result, "product");?> - $<?php echo get($result, "price");?> </p>
 

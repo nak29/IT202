@@ -11,7 +11,8 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (isset($_SESSION["user"])) {
 $old_created = -1;
 ?>
-
+    
+<h4>Previous Orders</h4>
 <ul class="orders">
 
     <?php foreach($results as $row):?>

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-?>
+?><h4>Your Cart</h4>
 <ul class="cart">
     <?php foreach($result as $row):?>
         <?php if(get($row, "quantity") > 0) {;?>
