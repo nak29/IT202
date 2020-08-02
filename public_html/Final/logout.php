@@ -2,7 +2,7 @@
 include(__DIR__ . "/header.php");
 //session_start();
 if (isset($_SESSION["user"])):?>
-    <p>"Logging out..."</p>
+    <p class="noUser">"Logging out..."</p>
 <?php else:?>
     <p class="noUser">You aren't logged in but...</p>
 <?php endif;?>
