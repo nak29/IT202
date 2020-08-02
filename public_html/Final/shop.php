@@ -120,8 +120,8 @@ catch (Exception $e) {
     <?php foreach($results as $row):?>
         <li>
             <?php echo get($row, "product")?>
-            <?php echo get($row, "price");?>
-            <?php echo get($row, "quantity");?>
+            $<?php echo get($row, "price");?>
+            (<?php echo get($row, "quantity");?>left in stock)
             <a href="shop.php?thingId=<?php echo get($row, "id");?>">View</a>
         </li>
     <?php endforeach;?>
