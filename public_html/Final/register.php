@@ -51,7 +51,7 @@ if(isset($_POST["register"])){
                     echo var_export($e, true);
                 }
                 else{
-                    echo "<div>Successfully registered! Welcome " . $fname . "!</div>";
+                    ?><p class="noUser"><?php echo "Successfully registered! Welcome " . $fname . "!";?></p><?php
                 }
             }
             catch (Exception $e){
@@ -59,7 +59,7 @@ if(isset($_POST["register"])){
             }
         }
         else{
-            echo "<div>Passwords don't match</div>";
+            ?><p class="noUser"><?php echo "Passwords don't match";?></p><?php
         }
     }
 }
