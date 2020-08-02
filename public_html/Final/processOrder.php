@@ -66,7 +66,7 @@ if(isset($_POST["COrder"])) {
         $stmt4 = getDB()->prepare("DELETE FROM Cart where user_id = :uid");
         $stmt4->execute([":uid"=>$user_id]);
 
-        ?><p><?php echo "You have placed an order!";?></p>
+        ?><p class="noUser"><?php echo "You have placed an order!";?></p>
         <br>
         <a href="orders.php">View all past orders here</a>
         <?php

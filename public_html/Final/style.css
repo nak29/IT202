@@ -89,3 +89,7 @@ p.noUser {
     font-size: 32px;
     font-family: "Roboto Black", serif;
 }
+a {
+    font-size: 20px;
+    font-weight: bold;
+}
