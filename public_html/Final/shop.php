@@ -5,6 +5,8 @@ $query = file_get_contents(__DIR__ . "/queries/ASCEND_TABLE_PRODUCTS.sql");
 $connection_string = "mysql:host=$dbhost;dbname=$dbdatabase;charset=utf8mb4";
 $db = new PDO($connection_string, $dbuser, $dbpass);
 
+    ?><h4>Shop</h4><?php
+
 $thingId = -1;
 $result = array();
 if(isset($_GET["thingId"])) {
@@ -13,7 +15,6 @@ if(isset($_GET["thingId"])) {
     $stmt->execute([":id" => $thingId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);?>
 
-    <h4>Shop</h4>
 
     <form method="POST" action="shop.php?thingId=<?php echo get($result, "id")?>">
         <p class="pname"> <?php echo get($result, "product");?> - $<?php echo get($result, "price");?> </p>

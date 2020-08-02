@@ -4,7 +4,7 @@ include(__DIR__ . "/header.php");
 if (isset($_SESSION["user"])):?>
     <p>"Logging out..."</p>
 <?php else:?>
-    <p class="noUser">"You aren't logged in but..."</p>
+    <p class="noUser">You aren't logged in but...</p>
 <?php endif;?>
 <?php
 session_unset();
