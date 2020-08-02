@@ -36,13 +36,14 @@ if(isset($_POST["COrder"])) {
         else {
 
         foreach($result2 as $row) {
-            $stmt6 = getDB()->prepare("SELECT FROM Products where id = :pid");
+            $stmt6 = getDB()->prepare("SELECT * FROM Products where id = :pid");
             $stmt6->execute([":pid" => get($row, "product_id")]);
             $result6 = $stmt6->fetch(PDO::FETCH_ASSOC);
-            echo (get($result6, "quantity"));
-            echo (get($result6, "product"));
-            echo (get($row, "quantity"));
-            echo (get($row, "product_id"));
+            echo (get($result6, "quantity")); //3
+            echo (get($result6, "product"));  //14 (shirt)
+            echo (get($row, "quantity"));     //2
+            echo (get($row, "product_id"));   //11 (sweatpants)
+
             if(get($result6, "quantity") - get($row, "quantity") < 0){
                 $noGood = -1;
             }
