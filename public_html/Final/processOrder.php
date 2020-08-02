@@ -39,7 +39,8 @@ if(isset($_POST["COrder"])) {
             $stmt6 = getDB()->prepare("SELECT FROM Products where id = :pid");
             $stmt6->execute([":pid" => get($row, "product_id")]);
             $result6 = $stmt6->fetch(PDO::FETCH_ASSOC);
-
+            echo (get($result6, "quantity"));
+            echo (get($row, "quantity"));
             if(get($result6, "quantity") - get($row, "quantity") < 0){
                 $noGood = -1;
             }
